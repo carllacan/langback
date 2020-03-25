@@ -3,14 +3,21 @@ extends Node2D
 #var title = ""
 var sentences = []
 
+onready var main_menu = find_node("MainMenu")
+onready var language_menu = find_node("LanguageMenu")
 onready var text_input_window = find_node("TextInputWindow")
 onready var progress_window = find_node("ProgressWindow")
 onready var progress_bar = find_node("ProgressBar")
 onready var sentence_list = find_node("SentenceList")
 
 func _ready():
-    $HTTPRequest.connect("request_completed", self, "_on_request_completed")
-
+	$HTTPRequest.connect("request_completed", self, "_on_request_completed")
+	
+	main_menu.show()
+	language_menu.hide()
+	text_input_window.hide()
+	progress_window.hide()
+	sentence_list.hide()
 
 
 #func _create():
@@ -32,7 +39,7 @@ func _create():
 		if len(sentence) >=1:
 			sentences.append([sentence])
 	print(sentences)
-	translate_sentence(sentences[0][0], "it", "en")
+	translate_sentence(sentences[0][0], "fr", "en")
 
 func add_translation(translation):
 	for sentence_pair in sentences:
@@ -48,7 +55,7 @@ func add_translation(translation):
 	var all_translated = true
 	for sentence_pair in sentences:
 		if len(sentence_pair) != 2:
-			translate_sentence(sentence_pair[0], "it", "en")
+			translate_sentence(sentence_pair[0], "fr", "en")
 			return
 			all_translated = false
 	if all_translated:
@@ -105,3 +112,7 @@ func _on_request_completed(result, response_code, headers, body):
 	var original = parsed_res["matches"][0]["segment"]
 
 	add_translation(translation)
+
+func _on_CreateButton_pressed():
+	main_menu.hide()
+	text_input_window.show()
