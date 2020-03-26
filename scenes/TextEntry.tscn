@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/TextEntry.gd" type="Script" id=1]
 [ext_resource path="res://scripts/LanguageMenu.gd" type="Script" id=2]
-[ext_resource path="res://scripts/SentenceList.gd" type="Script" id=3]
+[ext_resource path="res://scripts/TextInputWindow.gd" type="Script" id=3]
+[ext_resource path="res://scripts/SentenceList.gd" type="Script" id=4]
 
 [node name="TextEntry" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,6 +24,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MainMenu" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+editor/display_folded = true
 visible = false
 margin_left = 302.0
 margin_top = 178.0
@@ -117,10 +119,11 @@ text = "Load"
 
 [node name="LanguageMenu" type="HBoxContainer" parent="MarginContainer/CenterContainer"]
 editor/display_folded = true
-margin_left = 426.0
-margin_top = 104.0
-margin_right = 598.0
-margin_bottom = 496.0
+visible = false
+margin_left = 505.0
+margin_top = 111.0
+margin_right = 519.0
+margin_bottom = 489.0
 script = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/LanguageMenu"]
@@ -193,12 +196,11 @@ rect_min_size = Vector2( 200, 120 )
 text = "German"
 
 [node name="TextInputWindow" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
-editor/display_folded = true
-visible = false
 margin_left = 152.0
 margin_top = 88.0
 margin_right = 872.0
 margin_bottom = 511.0
+script = ExtResource( 3 )
 
 [node name="TextTitle" type="PanelContainer" parent="MarginContainer/CenterContainer/TextInputWindow"]
 margin_right = 720.0
@@ -309,7 +311,7 @@ rect_min_size = Vector2( 500, 500 )
 size_flags_horizontal = 3
 size_flags_vertical = 5
 scroll_horizontal_enabled = false
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/SentenceList"]
 size_flags_vertical = 5
@@ -317,3 +319,4 @@ size_flags_vertical = 5
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 [connection signal="pressed" from="MarginContainer/CenterContainer/MainMenu/CreateButton" to="." method="_on_CreateButton_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/TextInputWindow/HBoxContainer/CreateButton" to="." method="_create"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/TextInputWindow/HBoxContainer/ResetButton" to="MarginContainer/CenterContainer/TextInputWindow" method="_on_ResetButton_pressed"]
