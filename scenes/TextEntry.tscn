@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/TextEntry.gd" type="Script" id=1]
-[ext_resource path="res://scripts/SentenceList.gd" type="Script" id=2]
+[ext_resource path="res://scripts/LanguageMenu.gd" type="Script" id=2]
+[ext_resource path="res://scripts/SentenceList.gd" type="Script" id=3]
 
 [node name="TextEntry" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,7 +23,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MainMenu" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
-editor/display_folded = true
+visible = false
 margin_left = 302.0
 margin_top = 178.0
 margin_right = 722.0
@@ -42,10 +43,12 @@ rect_min_size = Vector2( 420, 120 )
 text = "Load a text"
 
 [node name="LoadMenu" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
-margin_left = 337.0
-margin_top = 263.0
-margin_right = 687.0
-margin_bottom = 337.0
+editor/display_folded = true
+visible = false
+margin_left = 505.0
+margin_top = 293.0
+margin_right = 519.0
+margin_bottom = 307.0
 
 [node name="TextItem" type="PanelContainer" parent="MarginContainer/CenterContainer/LoadMenu"]
 margin_right = 350.0
@@ -114,53 +117,43 @@ text = "Load"
 
 [node name="LanguageMenu" type="HBoxContainer" parent="MarginContainer/CenterContainer"]
 editor/display_folded = true
-visible = false
-margin_left = 310.0
-margin_top = 107.0
-margin_right = 714.0
-margin_bottom = 493.0
+margin_left = 426.0
+margin_top = 104.0
+margin_right = 598.0
+margin_bottom = 496.0
+script = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/LanguageMenu"]
-editor/display_folded = true
-margin_right = 200.0
-margin_bottom = 400.0
+margin_right = 172.0
+margin_bottom = 392.0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/CenterContainer/LanguageMenu/VBoxContainer"]
-editor/display_folded = true
-margin_right = 200.0
+margin_right = 172.0
 margin_bottom = 28.0
 
 [node name="Label" type="Label" parent="MarginContainer/CenterContainer/LanguageMenu/VBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 193.0
+margin_right = 165.0
 margin_bottom = 21.0
 text = "Choose original language"
 align = 1
 
-[node name="English" type="Button" parent="MarginContainer/CenterContainer/LanguageMenu/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/CenterContainer/LanguageMenu/VBoxContainer"]
 margin_top = 32.0
-margin_right = 200.0
-margin_bottom = 152.0
-rect_min_size = Vector2( 200, 120 )
-text = "English"
+margin_right = 172.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 0, 360 )
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
 
-[node name="French" type="Button" parent="MarginContainer/CenterContainer/LanguageMenu/VBoxContainer"]
-margin_top = 156.0
-margin_right = 200.0
-margin_bottom = 276.0
-rect_min_size = Vector2( 200, 120 )
-text = "French"
-
-[node name="German" type="Button" parent="MarginContainer/CenterContainer/LanguageMenu/VBoxContainer"]
-margin_top = 280.0
-margin_right = 200.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 200, 120 )
-text = "German"
+[node name="LanguageList" type="VBoxContainer" parent="MarginContainer/CenterContainer/LanguageMenu/VBoxContainer/ScrollContainer"]
+margin_bottom = 360.0
+size_flags_vertical = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/CenterContainer/LanguageMenu"]
 editor/display_folded = true
+visible = false
 margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 400.0
@@ -175,7 +168,7 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 193.0
 margin_bottom = 21.0
-text = "Choose original language"
+text = "Choose your language"
 align = 1
 
 [node name="English" type="Button" parent="MarginContainer/CenterContainer/LanguageMenu/VBoxContainer2"]
@@ -316,7 +309,7 @@ rect_min_size = Vector2( 500, 500 )
 size_flags_horizontal = 3
 size_flags_vertical = 5
 scroll_horizontal_enabled = false
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/SentenceList"]
 size_flags_vertical = 5

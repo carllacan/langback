@@ -1,25 +1,40 @@
 extends Node2D
 
 #var title = ""
+var language
 var sentences = []
+var current_window
 
 onready var main_menu = find_node("MainMenu")
+onready var load_menu = find_node("LoadMenu")
 onready var language_menu = find_node("LanguageMenu")
 onready var text_input_window = find_node("TextInputWindow")
 onready var progress_window = find_node("ProgressWindow")
 onready var progress_bar = find_node("ProgressBar")
-onready var sentence_list = find_node("SentenceList")
+onready var sentences_window = find_node("SentenceList")
+
 
 func _ready():
 	$HTTPRequest.connect("request_completed", self, "_on_request_completed")
 	
-	main_menu.show()
+	language_menu.connect("language_selected", self, "_on_language_selection")
+	
+	main_menu.hide()
+	load_menu.hide()
 	language_menu.hide()
 	text_input_window.hide()
 	progress_window.hide()
-	sentence_list.hide()
+	sentences_window.hide()
+	
+	current_window = main_menu
+	current_window.show()
 
-
+func change_window(new):
+	
+	current_window.hide()
+	current_window = new
+	current_window.show()
+	
 #func _create():
 #	sentences = [["Ola","Hello"],["Ciao","Goodbye"]]
 #	_on_translation_completion()
@@ -39,7 +54,7 @@ func _create():
 		if len(sentence) >=1:
 			sentences.append([sentence])
 	print(sentences)
-	translate_sentence(sentences[0][0], "fr", "en")
+	translate_sentence(sentences[0][0], language, "en")
 
 func add_translation(translation):
 	for sentence_pair in sentences:
@@ -55,7 +70,7 @@ func add_translation(translation):
 	var all_translated = true
 	for sentence_pair in sentences:
 		if len(sentence_pair) != 2:
-			translate_sentence(sentence_pair[0], "fr", "en")
+			translate_sentence(sentence_pair[0], language, "en")
 			return
 			all_translated = false
 	if all_translated:
@@ -78,8 +93,8 @@ func _on_translation_completion():
 	saved_texts.close()
 
 	progress_window.hide()
-	sentence_list.show()
-	sentence_list.add_sentences(sentences)
+	sentences_window.show()
+	sentences_window.add_sentences(sentences)
 
 
 func translate_sentence(sentence, origin, target):
@@ -114,5 +129,8 @@ func _on_request_completed(result, response_code, headers, body):
 	add_translation(translation)
 
 func _on_CreateButton_pressed():
-	main_menu.hide()
-	text_input_window.show()
+	change_window(language_menu)
+	
+func _on_language_selection(lang):
+	language = lang
+	change_window(text_input_window)

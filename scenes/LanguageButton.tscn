@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="German" type="Button"]
+margin_left = -0.735092
+margin_top = 32.0
+margin_right = 199.265
+margin_bottom = 152.0
+rect_min_size = Vector2( 200, 120 )
+text = "German"
