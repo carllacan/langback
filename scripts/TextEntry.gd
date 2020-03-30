@@ -3,6 +3,7 @@ extends Node2D
 #var title = ""
 var language
 var sentences = []
+var text_info
 var current_window
 
 onready var main_menu = find_node("MainMenu")
@@ -18,6 +19,7 @@ func _ready():
 	$HTTPRequest.connect("request_completed", self, "_on_request_completed")
 	
 	language_menu.connect("language_selected", self, "_on_language_selection")
+	load_menu.connect("text_chosen", self, "_on_text_choice")
 	
 	main_menu.hide()
 	load_menu.hide()
@@ -155,4 +157,8 @@ func save_text(text_info):
 	saved_texts.close()
 		
 
+func _on_text_choice(_text_info):
+	text_info = _text_info
+	sentences_window.add_text_info(text_info)
+	change_window(sentences_window)
 

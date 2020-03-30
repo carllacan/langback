@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+signal text_chosen
+
 const SAVED_TEXTS_DIR = "res://saved_texts/"
 var TextItem = load("res://scenes/TextItem.tscn")
 
@@ -35,4 +37,7 @@ func load_saved_texts():
 			var new_ti = TextItem.instance()
 			add_child(new_ti)
 			new_ti.load_text_info(text_info)
+			new_ti.connect("chosen", self, "_on_text_choice")
 	
+func _on_text_choice(text_info):
+	emit_signal("text_chosen", text_info)

@@ -235,7 +235,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 5
 
 [node name="SentenceList" type="ScrollContainer" parent="MarginContainer/CenterContainer"]
-visible = false
 margin_left = 262.0
 margin_top = 50.0
 margin_right = 762.0
@@ -247,7 +246,22 @@ scroll_horizontal_enabled = false
 script = ExtResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/SentenceList"]
+margin_right = 500.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
 size_flags_vertical = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/CenterContainer/SentenceList/VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+
+[node name="TextTitle" type="Label" parent="MarginContainer/CenterContainer/SentenceList/VBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 493.0
+margin_bottom = 21.0
+text = "The title of this text"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 [connection signal="pressed" from="MarginContainer/CenterContainer/MainMenu/CreateButton" to="." method="_on_CreateButton_pressed"]
