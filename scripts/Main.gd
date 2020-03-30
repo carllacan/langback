@@ -3,7 +3,7 @@ extends Node2D
 #var title = ""
 var language
 var sentences = []
-var text_info
+var text_info = {}
 var current_window
 
 onready var main_menu = find_node("MainMenu")
@@ -20,6 +20,7 @@ func _ready():
 	
 	language_menu.connect("language_selected", self, "_on_language_selection")
 	load_menu.connect("text_chosen", self, "_on_text_choice")
+	sentences_window.connect("sentence_done", self, "_on_sentence_done")
 	
 	main_menu.hide()
 	load_menu.hide()
@@ -85,20 +86,22 @@ func _on_translation_completion():
 		print("Original:\t" + sentence_pair[0])
 		print("Translation:\t" + sentence_pair[1])
 
-	var text_info = {}
+#	var text_info = {}
 	text_info["Title"] = find_node("TitleEdit").text
 	text_info["Language"] = language
 	text_info["Sentences"] = []
 	for sentence in sentences:
 		var sentence_info = {"Original":sentence[0],
-							 "Translation":sentence[1]}
+							 "Translation":sentence[1],
+							 "Done":false}
+		text_info["Sentences"].append(sentence_info)
 		
 		
 	save_text(text_info)
 	
 	progress_window.hide()
 	sentences_window.show()
-	sentences_window.add_sentences(sentences)
+	sentences_window.add_sentences(text_info["Sentences"])
 
 
 func translate_sentence(sentence, origin, target):
@@ -155,6 +158,7 @@ func save_text(text_info):
 	saved_texts.open("res://saved_texts/" + fn, File.WRITE)
 	saved_texts.store_string(JSON.print(text_info))
 	saved_texts.close()
+	# TODO: if file exists add a number
 		
 
 func _on_text_choice(_text_info):
@@ -162,3 +166,10 @@ func _on_text_choice(_text_info):
 	sentences_window.add_text_info(text_info)
 	change_window(sentences_window)
 
+func _on_sentence_done(original):
+	for sentence in text_info["Sentences"]:
+		if sentence["Original"] == original:
+			sentence["Done"] = true
+	save_text(text_info)
+	print(original)
+	print("is done")
