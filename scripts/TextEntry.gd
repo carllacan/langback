@@ -133,6 +133,9 @@ func _on_request_completed(result, response_code, headers, body):
 func _on_CreateButton_pressed():
 	change_window(language_menu)
 	
+func _on_LoadButton_pressed():
+	change_window(load_menu)
+	
 func _on_language_selection(lang):
 	language = lang
 	change_window(text_input_window)
@@ -151,3 +154,5 @@ func save_text(text_info):
 	saved_texts.store_string(JSON.print(text_info))
 	saved_texts.close()
 		
+
+
