@@ -16,7 +16,7 @@ func add_sentences(_sentences):
 	for sentence in _sentences:
 		var new_sb = SentenceBox.instance()
 		find_node("VBoxContainer").add_child(new_sb)
-		new_sb.set_sentence(sentence["Original"], sentence["Translation"])
+		new_sb.set_sentence(sentence["Original"], sentence["Translation"], sentence["Done"])
 		new_sb.connect("done", self, "_on_sentence_done", [sentence["Original"]])
 		
 func _on_sentence_done(original):

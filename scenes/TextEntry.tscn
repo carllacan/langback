@@ -127,7 +127,6 @@ rect_min_size = Vector2( 200, 120 )
 text = "German"
 
 [node name="TextInputWindow" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
-visible = false
 margin_left = 152.0
 margin_top = 88.0
 margin_right = 872.0
@@ -155,7 +154,7 @@ margin_top = 18.0
 margin_right = 706.0
 margin_bottom = 61.0
 size_flags_vertical = 3
-text = "A simple text"
+text = "Die verlorene Revolution"
 wrap_enabled = true
 
 [node name="TextContent2" type="PanelContainer" parent="MarginContainer/CenterContainer/TextInputWindow"]
@@ -180,7 +179,7 @@ margin_top = 18.0
 margin_right = 706.0
 margin_bottom = 306.0
 size_flags_vertical = 3
-text = "Ola. Ciao."
+text = "Die Herbstrevolution von 1989 wurde nie vollendet! Im Grunde war es danach vorbei."
 wrap_enabled = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/TextInputWindow"]
@@ -235,6 +234,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 5
 
 [node name="SentenceList" type="ScrollContainer" parent="MarginContainer/CenterContainer"]
+visible = false
 margin_left = 262.0
 margin_top = 50.0
 margin_right = 762.0
@@ -247,7 +247,7 @@ script = ExtResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/SentenceList"]
 margin_right = 500.0
-margin_bottom = 28.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 

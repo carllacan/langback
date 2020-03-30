@@ -53,7 +53,8 @@ func _create():
 	text_input_window.hide()
 	progress_window.show()
 
-	for sentence in text.split("."):
+#	for sentence in text.split("."):
+	for sentence in split(text, ".!"):
 		if len(sentence) >=1:
 			sentences.append([sentence])
 	print(sentences)
@@ -173,3 +174,13 @@ func _on_sentence_done(original):
 	save_text(text_info)
 	print(original)
 	print("is done")
+
+
+func split(string, delimiters):
+	# Custom string split function that can use more than one delimiter.
+	var parts = []
+	for c in string:
+		if len(parts) == 0 or parts[-1][-1] in delimiters:
+			parts.append('')
+		parts[-1] += c
+	return parts
