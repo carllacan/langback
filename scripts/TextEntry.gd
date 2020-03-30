@@ -85,13 +85,15 @@ func _on_translation_completion():
 
 	var text_info = {}
 	text_info["Title"] = find_node("TitleEdit").text
-	text_info["Sentences"] = sentences
-
-	var saved_texts = File.new()
-	saved_texts.open("res://save_texts.json", File.WRITE)
-	saved_texts.store_string(JSON.print(text_info))
-	saved_texts.close()
-
+	text_info["Language"] = language
+	text_info["Sentences"] = []
+	for sentence in sentences:
+		var sentence_info = {"Original":sentence[0],
+							 "Translation":sentence[1]}
+		
+		
+	save_text(text_info)
+	
 	progress_window.hide()
 	sentences_window.show()
 	sentences_window.add_sentences(sentences)
@@ -103,7 +105,7 @@ func translate_sentence(sentence, origin, target):
 
 	var headers = ["Content-Type: application/json"]
 	$HTTPRequest.request(url, headers)
-
+	
 func _on_request_completed(result, response_code, headers, body):
 	print("Result:")
 	var parsed_res = parse_json(body.get_string_from_utf8())
@@ -134,3 +136,18 @@ func _on_CreateButton_pressed():
 func _on_language_selection(lang):
 	language = lang
 	change_window(text_input_window)
+
+func make_filename(title):
+	var fn = title
+	var to_remove = ".,/ \\$%"
+	for ch in to_remove:
+		fn = fn.replace(ch, "")
+	return fn.substr(0, 15) + ".json"
+		
+func save_text(text_info):
+	var saved_texts = File.new()
+	var fn = make_filename(text_info["Title"])
+	saved_texts.open("res://saved_texts/" + fn, File.WRITE)
+	saved_texts.store_string(JSON.print(text_info))
+	saved_texts.close()
+		
