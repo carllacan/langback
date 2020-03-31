@@ -59,4 +59,5 @@ func _on_HintButton_pressed():
 		if c == original[correct]:
 			correct += 1
 	translation_box.text = original.substr(0, correct+1)
+	
 

@@ -1,5 +1,11 @@
 extends Node2D
 
+const SENTENCE_DELIMITERS = ".!?"
+const REPLACEMENTS = {"’": "'",
+					  "\n":"",
+					"\r":"",
+					  }
+	
 #var title = ""
 var language
 var sentences = []
@@ -52,9 +58,11 @@ func _create():
 
 	text_input_window.hide()
 	progress_window.show()
-
-#	for sentence in text.split("."):
-	for sentence in split(text, ".!"):
+	
+	for c in REPLACEMENTS:
+		text = text.replace(c, REPLACEMENTS[c])
+		
+	for sentence in split(text, SENTENCE_DELIMITERS):
 		if len(sentence) >=1:
 			sentences.append([sentence])
 	print(sentences)
