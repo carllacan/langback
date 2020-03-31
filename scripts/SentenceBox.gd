@@ -51,13 +51,15 @@ func set_focus_next(_next_sentence_box):
 	next_sentence_box = _next_sentence_box
 	translation_box.set_focus_next(next_sentence_box.get_path())
 
-
-func _on_HintButton_pressed():
-#	var user_translation = translation_box.text
+func get_correct_characters():
 	var correct = 0
 	for c in translation_box.text:
 		if c == original[correct]:
 			correct += 1
-	translation_box.text = original.substr(0, correct+1)
+	return correct
 	
-
+func _on_HintButton_pressed():
+	translation_box.text = original.substr(0, get_correct_characters()+1)
+	_on_text_changed() # manually changing the text does not trigger the signal, I have to call this manually
+	translation_box.grab_focus()
+	translation_box.cursor_set_column(len(translation_box.text), true)
