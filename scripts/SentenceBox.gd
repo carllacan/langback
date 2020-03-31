@@ -9,6 +9,7 @@ var original = ""
 var translation = ""
 
 var done = false
+var next_sentence_box = null
 
 func set_sentence(_original, _translation, done=false):
 	original = _original
@@ -37,3 +38,12 @@ func on_completion():
 		translation_box.readonly = true
 		done = true
 		emit_signal("done")
+		if next_sentence_box != null:
+			next_sentence_box.grab_focus()
+		
+func grab_focus():
+	translation_box.grab_focus()
+	
+func set_focus_next(_next_sentence_box):
+	next_sentence_box = _next_sentence_box
+	translation_box.set_focus_next(next_sentence_box.get_path())
