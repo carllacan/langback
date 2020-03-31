@@ -17,7 +17,7 @@ script = ExtResource( 1 )
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 633.0
-margin_bottom = 98.0
+margin_bottom = 104.0
 size_flags_vertical = 0
 
 [node name="OriginalSentence" type="Label" parent="VBoxContainer"]
@@ -33,8 +33,23 @@ margin_bottom = 73.0
 rect_min_size = Vector2( 0, 55 )
 wrap_enabled = true
 
-[node name="Indicator" type="Label" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 77.0
 margin_right = 626.0
-margin_bottom = 91.0
+margin_bottom = 97.0
+
+[node name="Indicator" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_top = 3.0
+margin_right = 29.0
+margin_bottom = 17.0
+text = "NOK"
+
+[node name="HintButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 33.0
+margin_right = 72.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "Hint"
 [connection signal="text_changed" from="VBoxContainer/UserTranslation" to="." method="_on_text_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HintButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HintButton" to="." method="_on_HintButton_pressed"]
