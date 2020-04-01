@@ -6,7 +6,8 @@
 * TODO paint wrong characters in red
 * TODO allow text deletion
 * TODO count words translated per day
-* TODO show language flag when selecting texts
+* DONE show language flag when selecting texts
+* DONE substitute text buttons for flags when choosing language
 * DONE add "back" buttons
 * TODO slide next sentence to screen center
 * DONE move hint button to side of the sentencebox

@@ -81,16 +81,15 @@ size_flags_horizontal = 4
 text = "Cancel"
 
 [node name="LanguageMenu" type="HBoxContainer" parent="CenterContainer"]
-visible = false
-margin_left = 477.0
-margin_top = 93.0
-margin_right = 547.0
-margin_bottom = 507.0
+margin_left = 411.0
+margin_top = 241.0
+margin_right = 612.0
+margin_bottom = 358.0
 script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/LanguageMenu"]
 margin_right = 201.0
-margin_bottom = 437.0
+margin_bottom = 117.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer/LanguageMenu/VBoxContainer"]
 margin_right = 201.0
@@ -104,7 +103,14 @@ margin_bottom = 28.0
 text = "Choose original language"
 align = 1
 
+[node name="LanguageGrid" type="GridContainer" parent="CenterContainer/LanguageMenu/VBoxContainer"]
+margin_top = 37.0
+margin_right = 201.0
+margin_bottom = 37.0
+columns = 5
+
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/LanguageMenu/VBoxContainer"]
+visible = false
 margin_top = 37.0
 margin_right = 201.0
 margin_bottom = 397.0
@@ -119,14 +125,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/LanguageMenu/VBoxContainer"]
-margin_top = 401.0
+margin_top = 41.0
 margin_right = 201.0
-margin_bottom = 437.0
+margin_bottom = 117.0
+custom_constants/margin_top = 20
+custom_constants/margin_bottom = 20
 
 [node name="CancelButton" type="Button" parent="CenterContainer/LanguageMenu/VBoxContainer/MarginContainer2"]
 margin_left = 65.0
+margin_top = 20.0
 margin_right = 135.0
-margin_bottom = 36.0
+margin_bottom = 56.0
 size_flags_horizontal = 4
 text = "Cancel"
 
@@ -247,6 +256,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 5
 
 [node name="SentenceList" type="ScrollContainer" parent="CenterContainer"]
+visible = false
 margin_left = 151.0
 margin_top = 49.0
 margin_right = 871.0
@@ -259,7 +269,7 @@ script = ExtResource( 5 )
 
 [node name="VBox" type="VBoxContainer" parent="CenterContainer/SentenceList"]
 margin_right = 720.0
-margin_bottom = 80.0
+margin_bottom = 54.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/SentenceList/VBox"]
