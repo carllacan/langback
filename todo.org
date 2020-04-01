@@ -1,0 +1,3 @@
+* TODO organize saved texts by language
+* TODO allow user to select translation language
+* TODO allow user to complete whole words

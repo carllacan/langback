@@ -46,10 +46,10 @@ text = "NOK"
 
 [node name="HintButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 33.0
-margin_right = 72.0
+margin_right = 75.0
 margin_bottom = 20.0
 size_flags_horizontal = 0
-text = "Hint"
+text = "Next"
 [connection signal="text_changed" from="VBoxContainer/UserTranslation" to="." method="_on_text_changed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/HintButton" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/HintButton" to="." method="_on_HintButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HintButton" to="." method="_on_Button_pressed"]

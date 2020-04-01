@@ -24,5 +24,5 @@ func add_sentences(_sentences):
 		last_sb = new_sb
 		
 func _on_sentence_done(original):
-
 	emit_signal("sentence_done", original)
+	

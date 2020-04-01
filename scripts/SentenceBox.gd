@@ -59,7 +59,40 @@ func get_correct_characters():
 	return correct
 	
 func _on_HintButton_pressed():
+	show_hint()
+	
+func show_hint():
 	translation_box.text = original.substr(0, get_correct_characters()+1)
 	_on_text_changed() # manually changing the text does not trigger the signal, I have to call this manually
 	translation_box.grab_focus()
 	translation_box.cursor_set_column(len(translation_box.text), true)
+	
+func _input(event):
+	if event.is_action_pressed("next"):
+		if translation_box.has_focus():
+			show_hint()
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
