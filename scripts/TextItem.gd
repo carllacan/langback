@@ -2,7 +2,7 @@ extends HBoxContainer
 
 signal chosen
 var text_info
-
+onready var flag = find_node("Flag")
 
 func load_text_info(_text_info):
 	text_info = _text_info
@@ -10,6 +10,8 @@ func load_text_info(_text_info):
 	find_node("TextTitle").text = text_info["Title"]
 	var sentence_num = len(text_info["Sentences"])
 	find_node("SentenceNumber").text = "%s sentences" % sentence_num
+
+	find_node("Flag").texture = load("res://flags/%s.png" % text_info["Language"])
 
 
 func _on_ContinueButton_pressed():

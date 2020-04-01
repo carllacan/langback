@@ -4,10 +4,11 @@ signal language_selected(lang)
 
 var LanguageBox = load("res://scenes/LanguageButton.tscn")
 
-const LANGUAGES = {"en":"English",
-					"de":"Deutsch",
-					"fr":"Français",
-					"it":"Italiano"}
+const LANGUAGES = {"de":"Deutsch",
+				   "fr":"Français",
+				   "it":"Italiano",
+				   "pt":"Portuguese",
+				   "es":"Spanish"}
 					
 onready var language_list = find_node("LanguageList")
 
