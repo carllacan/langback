@@ -104,5 +104,7 @@ margin_bottom = 150.0
 rect_min_size = Vector2( 80, 0 )
 [connection signal="pressed" from="Buttons/VBoxContainer2/NextButton" to="." method="_on_HintButton_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer2/ResetButton" to="." method="_on_ResetButton_pressed"]
+[connection signal="focus_entered" from="SentenceContainer/VBoxContainer/UserTranslation" to="." method="_on_UserTranslation_focus_entered"]
+[connection signal="focus_exited" from="SentenceContainer/VBoxContainer/UserTranslation" to="." method="_on_UserTranslation_focus_exited"]
 [connection signal="text_changed" from="SentenceContainer/VBoxContainer/UserTranslation" to="." method="_on_text_changed"]
 [connection signal="pressed" from="SentenceContainer/VBoxContainer/HBoxContainer/HintButton" to="." method="_on_HintButton_pressed"]

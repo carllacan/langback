@@ -50,9 +50,8 @@ func on_completion():
 		find_node("Indicator").text = "Done!"
 		sentence_container.add_stylebox_override("panel",DoneStyle)
 		translation_box.readonly = true
-#		hintbutton.disabled = true
-		buttons.hide()
-		dummy.show()
+
+		hide_buttons()
 		done = true
 		emit_signal("done")
 		if next_sentence_box != null:
@@ -89,3 +88,18 @@ func _input(event):
 			
 func _on_ResetButton_pressed():
 	translation_box.text = ""
+
+func hide_buttons():
+	buttons.hide()
+	dummy.show()
+	
+func show_buttons():
+	dummy.hide()
+	buttons.show()
+
+func _on_UserTranslation_focus_entered():
+	if not done:
+		show_buttons()
+
+func _on_UserTranslation_focus_exited():
+	hide_buttons()
