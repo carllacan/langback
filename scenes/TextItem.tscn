@@ -1,69 +1,103 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/TextItem.gd" type="Script" id=1]
+[ext_resource path="res://theme/theme.tres" type="Theme" id=2]
+[ext_resource path="res://theme/titlelabelfont.tres" type="DynamicFont" id=3]
 
-[node name="TextItem" type="PanelContainer"]
+[node name="TextItem" type="HBoxContainer"]
 margin_right = 350.0
 margin_bottom = 74.0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 343.0
-margin_bottom = 67.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
 
-[node name="Languages" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 60.0
+[node name="Languages" type="VBoxContainer" parent="."]
+margin_left = 4.0
+margin_right = 84.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/Languages"]
-margin_right = 64.0
-margin_bottom = 28.0
+[node name="PanelContainer" type="PanelContainer" parent="Languages"]
+margin_right = 80.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="OriginalLanguage" type="Label" parent="HBoxContainer/Languages/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 57.0
-margin_bottom = 21.0
+[node name="OriginalLanguage" type="Label" parent="Languages/PanelContainer"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 70.0
+margin_bottom = 29.0
+size_flags_horizontal = 4
 text = "Original"
 
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/Languages"]
-margin_top = 32.0
-margin_right = 64.0
-margin_bottom = 60.0
+[node name="PanelContainer2" type="PanelContainer" parent="Languages"]
+margin_top = 40.0
+margin_right = 80.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="TargetLanguage" type="Label" parent="HBoxContainer/Languages/PanelContainer2"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 57.0
-margin_bottom = 21.0
+[node name="TargetLanguage" type="Label" parent="Languages/PanelContainer2"]
+margin_left = 15.0
+margin_top = 6.0
+margin_right = 64.0
+margin_bottom = 29.0
+size_flags_horizontal = 4
 text = "Target"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 68.0
-margin_right = 276.0
-margin_bottom = 60.0
+[node name="CentralContainer" type="PanelContainer" parent="."]
+margin_left = 88.0
+margin_right = 344.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
 
-[node name="TextTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_right = 208.0
-margin_bottom = 14.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CentralContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 251.0
+margin_bottom = 71.0
+
+[node name="TextTitle" type="Label" parent="CentralContainer/VBoxContainer"]
+margin_right = 246.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 3 )
 text = "Title of the text"
+clip_text = true
 
-[node name="SentenceNumber" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 208.0
-margin_bottom = 32.0
+[node name="SentenceNumber" type="Label" parent="CentralContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 246.0
+margin_bottom = 53.0
 text = "Number of sentences in the text"
 
-[node name="LoadButton" type="Button" parent="HBoxContainer"]
-margin_left = 280.0
-margin_top = 20.0
-margin_right = 336.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 348.0
+margin_right = 441.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 80, 0 )
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+margin_right = 93.0
+margin_bottom = 36.0
+size_flags_horizontal = 11
+size_flags_vertical = 3
+text = "Continue"
+
+[node name="ResetButton" type="Button" parent="VBoxContainer"]
+margin_top = 40.0
+margin_right = 93.0
+margin_bottom = 76.0
+size_flags_horizontal = 11
 size_flags_vertical = 4
-text = "Load"
+text = "Reset"
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]

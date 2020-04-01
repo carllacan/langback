@@ -1,13 +1,8 @@
-extends PanelContainer
+extends HBoxContainer
 
 signal chosen
 var text_info
 
-func _ready():
-	find_node("LoadButton").connect("pressed", self, "_when_chosen")
-	
-func _when_chosen():
-	emit_signal("chosen", text_info)
 
 func load_text_info(_text_info):
 	text_info = _text_info
@@ -15,3 +10,13 @@ func load_text_info(_text_info):
 	find_node("TextTitle").text = text_info["Title"]
 	var sentence_num = len(text_info["Sentences"])
 	find_node("SentenceNumber").text = "%s sentences" % sentence_num
+
+
+func _on_ContinueButton_pressed():
+	emit_signal("chosen", text_info)
+
+
+func _on_ResetButton_pressed():
+	for sentence_num in range(len(text_info["Sentences"])):
+		text_info["Sentences"][sentence_num]["Done"] = false
+	emit_signal("chosen", text_info)

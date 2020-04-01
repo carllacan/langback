@@ -1,10 +1,13 @@
-extends PanelContainer
+extends HBoxContainer
 
 signal done
 
+onready var sentence_container = find_node("SentenceContainer")
 onready var original_label = find_node("OriginalSentence")
 onready var translation_box = find_node("UserTranslation")
-onready var hintbutton = find_node("HintButton")
+onready var hintbutton = find_node("NextButton")
+onready var buttons = find_node("Buttons")
+onready var dummy = find_node("Dummy")
 
 var BaseStyle = load("res://theme/panelstyle.tres")
 var WrongStyle = load("res://theme/panelwrongstyle.tres")
@@ -38,16 +41,18 @@ func _on_text_changed():
 	else:
 		if user_translation == original.substr(0,len(user_translation)):
 			find_node("Indicator").text = "OK"
-			add_stylebox_override("panel",BaseStyle)
+			sentence_container.add_stylebox_override("panel",BaseStyle)
 		else:
 			find_node("Indicator").text = "NOK"
-			add_stylebox_override("panel",WrongStyle)
+			sentence_container.add_stylebox_override("panel",WrongStyle)
 			
 func on_completion():
 		find_node("Indicator").text = "Done!"
-		add_stylebox_override("panel",DoneStyle)
+		sentence_container.add_stylebox_override("panel",DoneStyle)
 		translation_box.readonly = true
-		hintbutton.disabled = true
+#		hintbutton.disabled = true
+		buttons.hide()
+		dummy.show()
 		done = true
 		emit_signal("done")
 		if next_sentence_box != null:
@@ -82,27 +87,5 @@ func _input(event):
 		if translation_box.has_focus():
 			show_hint()
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+func _on_ResetButton_pressed():
+	translation_box.text = ""
