@@ -11,3 +11,4 @@ func _on_visibility_change():
 func reset():
 	find_node("TitleEdit").text = ""
 	find_node("TextEdit").text = ""
+

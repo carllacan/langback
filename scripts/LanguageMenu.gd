@@ -9,15 +9,17 @@ const LANGUAGES = {"en":"English",
 					"fr":"Français",
 					"it":"Italiano"}
 					
-	
+onready var language_list = find_node("LanguageList")
 
 func _ready():
 	for lang in LANGUAGES:
 		var new_lb = LanguageBox.instance()
-		find_node("LanguageList").add_child(new_lb)
+
+		language_list.add_child(new_lb)
 		new_lb.text = LANGUAGES[lang]
 		new_lb.connect("pressed", self,  "_on_language_selected", [lang])
 		
+			
 func _on_language_selected(lang):
 	emit_signal("language_selected", lang)
 		
