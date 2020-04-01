@@ -48,7 +48,7 @@ text = "NOK"
 [node name="HintButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 45.0
 margin_top = 7.0
-margin_right = 109.0
+margin_right = 99.0
 margin_bottom = 43.0
 size_flags_horizontal = 0
 size_flags_vertical = 4

@@ -10,5 +10,5 @@
 * TODO slide next sentence to screen center
 * TODO move hitn button to side of the sentencebox
 * TODO add reset button to sentencebox
-* TODO make sentence box change colour to red when wrong
-* TODO make sentence box change colour to green when done
+* DONE make sentence box change colour to red when wrong
+* DONE make sentence box change colour to green when done

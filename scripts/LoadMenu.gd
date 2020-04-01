@@ -10,7 +10,7 @@ func _ready():
 	connect("visibility_changed", self, "_on_visibility_change")
 	
 func _on_visibility_change():
-	if visible:
+	if not visible:
 		return
 	load_saved_texts()
 	

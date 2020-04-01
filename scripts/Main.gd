@@ -39,15 +39,10 @@ func _ready():
 	current_window.show()
 
 func change_window(new):
-	
 	current_window.hide()
 	current_window = new
 	current_window.show()
 	
-#func _create():
-#	sentences = [["Ola","Hello"],["Ciao","Goodbye"]]
-#	_on_translation_completion()
-
 func _create():
 	var text_box = find_node("TextEdit")
 	var text = text_box.text

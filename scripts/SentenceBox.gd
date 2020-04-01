@@ -6,6 +6,10 @@ onready var original_label = find_node("OriginalSentence")
 onready var translation_box = find_node("UserTranslation")
 onready var hintbutton = find_node("HintButton")
 
+var BaseStyle = load("res://theme/panelstyle.tres")
+var WrongStyle = load("res://theme/panelwrongstyle.tres")
+var DoneStyle = load("res://theme/paneldonestyle.tres")
+
 var original = ""
 var translation = ""
 
@@ -17,7 +21,7 @@ func set_sentence(_original, _translation, done=false):
 	translation = _translation
 	original_label.text = translation
 	translation_box.rect_size.y = original_label.rect_size.y
-	
+
 	if done:
 		translation_box.text = original
 		on_completion()
@@ -25,25 +29,30 @@ func set_sentence(_original, _translation, done=false):
 func _on_text_changed():
 	translation_box.center_viewport_to_cursor()
 	var user_translation = translation_box.text
-	if user_translation == "":
-		find_node("Indicator").text = ""
+#	if user_translation == "":
+#		find_node("Indicator").text = ""
+#		add_stylebox_override("panel",BaseStyle)
 		
-	elif user_translation == original:
+	if user_translation == original:
 		on_completion()
 	else:
 		if user_translation == original.substr(0,len(user_translation)):
 			find_node("Indicator").text = "OK"
+			add_stylebox_override("panel",BaseStyle)
 		else:
 			find_node("Indicator").text = "NOK"
+			add_stylebox_override("panel",WrongStyle)
 			
 func on_completion():
 		find_node("Indicator").text = "Done!"
+		add_stylebox_override("panel",DoneStyle)
 		translation_box.readonly = true
 		hintbutton.disabled = true
 		done = true
 		emit_signal("done")
 		if next_sentence_box != null:
 			next_sentence_box.grab_focus()
+			
 		
 func grab_focus():
 	translation_box.grab_focus()
