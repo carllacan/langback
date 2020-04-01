@@ -1,3 +1,9 @@
 * TODO organize saved texts by language
 * TODO allow user to select translation language
 * TODO allow user to complete whole words
+* TODO detect when API refuses to translate more words
+* TODO count words translated per day
+* TODO paint wrong characters in red
+* TODO allow text deletion
+* TODO count words translated per day
+* TODO add "back" buttons

@@ -23,6 +23,7 @@ func set_sentence(_original, _translation, done=false):
 		on_completion()
 	
 func _on_text_changed():
+	translation_box.center_viewport_to_cursor()
 	var user_translation = translation_box.text
 	if user_translation == "":
 		find_node("Indicator").text = ""
@@ -63,9 +64,9 @@ func _on_HintButton_pressed():
 	
 func show_hint():
 	translation_box.text = original.substr(0, get_correct_characters()+1)
-	_on_text_changed() # manually changing the text does not trigger the signal, I have to call this manually
 	translation_box.grab_focus()
 	translation_box.cursor_set_column(len(translation_box.text), true)
+	_on_text_changed() # manually changing the text does not trigger the signal, I have to call this manually
 	
 func _input(event):
 	if event.is_action_pressed("next"):
