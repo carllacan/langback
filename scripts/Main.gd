@@ -38,6 +38,8 @@ func _ready():
 	current_window = main_menu
 	current_window.show()
 
+	
+
 func change_window(new):
 	current_window.hide()
 	current_window = new
@@ -187,3 +189,8 @@ func split(string, delimiters):
 			parts.append('')
 		parts[-1] += c
 	return parts
+
+
+func _on_CancelButton_pressed():
+	change_window(main_menu)
+

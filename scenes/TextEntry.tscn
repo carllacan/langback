@@ -57,13 +57,27 @@ rect_min_size = Vector2( 420, 120 )
 text = "Load a text"
 
 [node name="LoadMenu" type="VBoxContainer" parent="CenterContainer"]
-visible = false
-margin_left = 512.0
-margin_top = 300.0
-margin_right = 512.0
-margin_bottom = 300.0
+margin_left = 151.0
+margin_top = 280.0
+margin_right = 871.0
+margin_bottom = 320.0
 rect_min_size = Vector2( 720, 0 )
 script = ExtResource( 2 )
+
+[node name="TextList" type="VBoxContainer" parent="CenterContainer/LoadMenu"]
+margin_right = 720.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/LoadMenu"]
+margin_top = 4.0
+margin_right = 720.0
+margin_bottom = 40.0
+
+[node name="CancelButton" type="Button" parent="CenterContainer/LoadMenu/MarginContainer"]
+margin_left = 325.0
+margin_right = 395.0
+margin_bottom = 36.0
+size_flags_horizontal = 4
+text = "Cancel"
 
 [node name="LanguageMenu" type="HBoxContainer" parent="CenterContainer"]
 visible = false
@@ -260,32 +274,31 @@ margin_right = 871.0
 margin_bottom = 549.0
 rect_min_size = Vector2( 720, 500 )
 size_flags_horizontal = 3
-size_flags_vertical = 5
+size_flags_vertical = 0
 scroll_horizontal_enabled = false
 script = ExtResource( 5 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/SentenceList"]
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/SentenceList"]
 margin_right = 720.0
-margin_bottom = 36.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
-size_flags_vertical = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/SentenceList/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/SentenceList/VBox"]
 margin_right = 720.0
 margin_bottom = 36.0
 
-[node name="Dummy" type="Container" parent="CenterContainer/SentenceList/VBoxContainer/HBoxContainer"]
+[node name="Dummy" type="Container" parent="CenterContainer/SentenceList/VBox/HBoxContainer"]
 margin_right = 80.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 80, 0 )
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/SentenceList/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/SentenceList/VBox/HBoxContainer"]
 margin_left = 84.0
 margin_right = 636.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 
-[node name="TextTitle" type="Label" parent="CenterContainer/SentenceList/VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="TextTitle" type="Label" parent="CenterContainer/SentenceList/VBox/HBoxContainer/PanelContainer"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 547.0
@@ -293,12 +306,18 @@ margin_bottom = 31.0
 custom_fonts/font = ExtResource( 8 )
 text = "The title of this text"
 
-[node name="Dummy2" type="Container" parent="CenterContainer/SentenceList/VBoxContainer/HBoxContainer"]
+[node name="Dummy2" type="Container" parent="CenterContainer/SentenceList/VBox/HBoxContainer"]
 margin_left = 640.0
 margin_right = 720.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 80, 0 )
+
+[node name="ListContainer" type="VBoxContainer" parent="CenterContainer/SentenceList/VBox"]
+margin_top = 40.0
+margin_right = 720.0
+margin_bottom = 40.0
 [connection signal="pressed" from="CenterContainer/MainMenu/CreateButton" to="." method="_on_CreateButton_pressed"]
 [connection signal="pressed" from="CenterContainer/MainMenu/LoadButton" to="." method="_on_LoadButton_pressed"]
+[connection signal="pressed" from="CenterContainer/LoadMenu/MarginContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="CenterContainer/TextInputWindow/HBoxContainer/CreateButton" to="." method="_create"]
-[connection signal="pressed" from="CenterContainer/TextInputWindow/HBoxContainer/ResetButton" to="CenterContainer/TextInputWindow" method="_on_ResetButton_pressed"]
+[connection signal="pressed" from="CenterContainer/TextInputWindow/HBoxContainer/ResetButton" to="CenterContainer/TextInputWindow" method="reset"]

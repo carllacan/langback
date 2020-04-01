@@ -6,9 +6,12 @@
 * TODO paint wrong characters in red
 * TODO allow text deletion
 * TODO count words translated per day
+* TODO show language flag when selecting texts
 * TODO add "back" buttons
 * TODO slide next sentence to screen center
-* TODO move hitn button to side of the sentencebox
-* TODO add reset button to sentencebox
+* DONE move hint button to side of the sentencebox
+* DONE add reset button to sentencebox
+* DONE add reset button to texts
 * DONE make sentence box change colour to red when wrong
 * DONE make sentence box change colour to green when done
+* TODO hide the next and reset buttons when not focused
