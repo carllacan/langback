@@ -35,7 +35,7 @@
 ** DONE hide the next button when not focused
 ** TODO make an animation for the hiding and showing of buttons
 * Settings window
-** TODO create settings window and button
+** DONE create settings window and button
 ** TODO allow language translation selection
 ** TODO allow interface language selection
 ** TODO allow option save

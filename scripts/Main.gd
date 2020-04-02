@@ -19,6 +19,8 @@ onready var text_input_window = find_node("TextInputWindow")
 onready var progress_window = find_node("ProgressWindow")
 onready var progress_bar = find_node("ProgressBar")
 onready var sentences_window = find_node("SentenceList")
+onready var settings_window = find_node("SettingsWindow")
+
 
 
 func _ready():
@@ -219,4 +221,5 @@ func resize():
 	find_node("VBoxContainer").rect_size = new_size
 		
 func _on_SettingsButton_pressed():
-	pass
+	settings_window.show()
+

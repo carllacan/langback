@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/LoadMenu.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://theme/titlelabelfont.tres" type="DynamicFont" id=8]
 [ext_resource path="res://icons/resize.svg" type="Texture" id=9]
 [ext_resource path="res://icons/gear.svg" type="Texture" id=10]
+[ext_resource path="res://scripts/SettingsWindow.gd" type="Script" id=11]
+[ext_resource path="res://scripts/Popups.gd" type="Script" id=12]
 
 [sub_resource type="Theme" id=1]
 PanelContainer/colors/ = Color( 0, 0, 0, 1 )
@@ -399,6 +401,100 @@ margin_right = 395.0
 margin_bottom = 80.0
 size_flags_horizontal = 4
 text = "Cancel"
+
+[node name="Popups" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource( 12 )
+
+[node name="PopupsBG" type="ColorRect" parent="Popups"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsWindow" type="CenterContainer" parent="Popups"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsWindow" type="VBoxContainer" parent="Popups/SettingsWindow"]
+margin_left = 412.0
+margin_top = 150.0
+margin_right = 612.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 200, 300 )
+theme = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Popups/SettingsWindow/SettingsWindow"]
+margin_right = 247.0
+margin_bottom = 260.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popups/SettingsWindow/SettingsWindow/PanelContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 242.0
+margin_bottom = 255.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popups/SettingsWindow/SettingsWindow/PanelContainer/VBoxContainer"]
+margin_right = 237.0
+margin_bottom = 33.0
+
+[node name="LanguageLabel" type="Label" parent="Popups/SettingsWindow/SettingsWindow/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 114.0
+margin_bottom = 28.0
+text = "Translation to: "
+
+[node name="LineEdit" type="LineEdit" parent="Popups/SettingsWindow/SettingsWindow/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 179.0
+margin_right = 237.0
+margin_bottom = 33.0
+size_flags_horizontal = 10
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Popups/SettingsWindow/SettingsWindow/PanelContainer/VBoxContainer"]
+margin_top = 37.0
+margin_right = 237.0
+margin_bottom = 79.0
+
+[node name="Fullscreen" type="Label" parent="Popups/SettingsWindow/SettingsWindow/PanelContainer/VBoxContainer/HBoxContainer2"]
+margin_top = 9.0
+margin_right = 159.0
+margin_bottom = 32.0
+text = "Fullscreen by default"
+
+[node name="CheckButton" type="CheckButton" parent="Popups/SettingsWindow/SettingsWindow/PanelContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 163.0
+margin_right = 237.0
+margin_bottom = 42.0
+size_flags_horizontal = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popups/SettingsWindow/SettingsWindow"]
+margin_left = 60.0
+margin_top = 264.0
+margin_right = 186.0
+margin_bottom = 300.0
+size_flags_horizontal = 4
+
+[node name="SaveButton" type="Button" parent="Popups/SettingsWindow/SettingsWindow/HBoxContainer"]
+margin_right = 52.0
+margin_bottom = 36.0
+text = "Save"
+
+[node name="CancelButton" type="Button" parent="Popups/SettingsWindow/SettingsWindow/HBoxContainer"]
+margin_left = 56.0
+margin_right = 126.0
+margin_bottom = 36.0
+text = "Cancel"
 [connection signal="pressed" from="GUI/VBoxContainer/Topbar/PanelContainer/FullscreenButton" to="." method="_on_FullscreenButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/Topbar/PanelContainer2/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/MainMenu/CreateButton" to="." method="_on_CreateButton_pressed"]
@@ -409,3 +505,5 @@ text = "Cancel"
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons/ResetButton" to="GUI/VBoxContainer/CenterContainer/TextInputWindow" method="reset"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/SentenceList/VBox/CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="Popups/SettingsWindow/SettingsWindow/HBoxContainer/SaveButton" to="Popups/SettingsWindow" method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="Popups/SettingsWindow/SettingsWindow/HBoxContainer/CancelButton" to="Popups/SettingsWindow" method="_on_CancelButton_pressed"]
