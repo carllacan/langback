@@ -1,6 +1,7 @@
 extends ScrollContainer
 
 signal sentence_done(original)
+signal sentence_reset(original)
 
 var sentences
 var text_info
@@ -29,10 +30,14 @@ func add_sentences(_sentences):
 		find_node("ListContainer").add_child(new_sb)
 		new_sb.set_sentence(sentence["Original"], sentence["Translation"], sentence["Done"])
 		new_sb.connect("done", self, "_on_sentence_done", [sentence["Original"]])
+		new_sb.connect("reset", self, "_on_sentence_rest", [sentence["Original"]])
 		if last_sb != null:
 			last_sb.set_focus_next(new_sb)
 		last_sb = new_sb
 		
 func _on_sentence_done(original):
 	emit_signal("sentence_done", original)
+	
+func _on_sentence_rest(original):
+	emit_signal("sentence_reset", original)
 	

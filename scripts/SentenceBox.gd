@@ -1,6 +1,7 @@
 extends HBoxContainer
 
 signal done
+signal reset
 
 onready var sentence_container = find_node("SentenceContainer")
 onready var original_label = find_node("OriginalSentence")
@@ -87,7 +88,11 @@ func _input(event):
 			show_hint()
 			
 func _on_ResetButton_pressed():
+	reset()
+	
+func reset():
 	translation_box.text = ""
+	emit_signal("reset")
 
 func hide_buttons():
 	buttons.hide()

@@ -8,6 +8,7 @@
 * TODO count words translated per day
 * DONE show language flag when selecting texts
 * DONE substitute text buttons for flags when choosing language
+* TODO create text and sentence buttons so that all stays linked with fewer signals
 * DONE add "back" buttons
 * TODO slide next sentence to screen center
 * DONE move hint button to side of the sentencebox
@@ -15,4 +16,8 @@
 * DONE add reset button to texts
 * DONE make sentence box change colour to red when wrong
 * DONE make sentence box change colour to green when done
-* TODO hide the next and reset buttons when not focused
+* DONE hide the next button when not focused
+* TODO make an animation for the hiding and showing of buttons
+* TODO make an animation for the window transitions
+* DONE add a word counter to the create window 
+* TODO add an animation to the word counter when it goes red

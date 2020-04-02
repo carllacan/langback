@@ -26,6 +26,7 @@ func _ready():
 	
 	language_menu.connect("language_selected", self, "_on_language_selection")
 	load_menu.connect("text_chosen", self, "_on_text_choice")
+	load_menu.connect("text_reset", self, "_on_text_reset")
 	sentences_window.connect("sentence_done", self, "_on_sentence_done")
 	
 	main_menu.hide()
@@ -177,9 +178,9 @@ func _on_sentence_done(original):
 		if sentence["Original"] == original:
 			sentence["Done"] = true
 	save_text(text_info)
-	print(original)
-	print("is done")
-
+	
+func _on_text_reset(_text_info):
+	save_text(_text_info)
 
 func split(string, delimiters):
 	# Custom string split function that can use more than one delimiter.

@@ -21,4 +21,5 @@ func _on_ContinueButton_pressed():
 func _on_ResetButton_pressed():
 	for sentence_num in range(len(text_info["Sentences"])):
 		text_info["Sentences"][sentence_num]["Done"] = false
+	emit_signal("reset", text_info)
 	emit_signal("chosen", text_info)
