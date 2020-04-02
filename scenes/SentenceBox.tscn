@@ -33,18 +33,17 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 
 [node name="NextButton" type="Button" parent="Buttons/VBoxContainer2"]
-margin_top = -1.0
 margin_right = 80.0
-margin_bottom = 49.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 80, 50 )
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "Next"
 
 [node name="ResetButton" type="Button" parent="Buttons/VBoxContainer2"]
-margin_top = 53.0
+margin_top = 54.0
 margin_right = 80.0
-margin_bottom = 103.0
+margin_bottom = 104.0
 rect_min_size = Vector2( 80, 50 )
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -74,6 +73,7 @@ margin_right = 542.0
 margin_bottom = 107.0
 rect_min_size = Vector2( 0, 80 )
 wrap_enabled = true
+caret_blink = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SentenceContainer/VBoxContainer"]
 visible = false

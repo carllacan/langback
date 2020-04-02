@@ -1,7 +1,14 @@
+* main window
+** TODO improve buttons
+** TODO add shoutout to mymemory
 * Load Text Window
 ** DONE show language flag when selecting texts
 ** DONE add reset button to texts
-** TODO organize saved texts by language
+** TODO make list scrollable
+** TODO sort saved texts by language
+*** TODO sort saved texts by last time worked on
+*** TODO sort by done and not done
+*** TODO sort by created
 ** TODO allow text deletion
 ** TODO allow text edit
 ** TODO allow adding sentences to texts
@@ -27,9 +34,16 @@
 ** DONE make sentence box change colour to green when done
 ** DONE hide the next button when not focused
 ** TODO make an animation for the hiding and showing of buttons
+* Settings window
+** TODO create settings window and button
+** TODO allow language translation selection
+** TODO allow interface language selection
+** TODO allow option save
+** TODO add fullscreen by default option
+** TODO add shortcut customization
 * General
-** TODO add fullscreen button
-*** TODO add fullscreen shortcut
+** DONE add fullscreen button
+*** DONE add fullscreen shortcut
 ** DONE create text and sentence objects so that all stays linked with fewer signals
 ** DONE add "back" buttons
 ** TODO make an animation for the window transitions

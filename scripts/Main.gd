@@ -38,6 +38,8 @@ func _ready():
 	
 	current_window = main_menu
 	current_window.show()
+	
+	resize()
 
 	
 
@@ -200,3 +202,21 @@ func split(string, delimiters):
 func _on_CancelButton_pressed():
 	change_window(main_menu)
 
+func _input(event):
+	if event.is_action_pressed("fullscreen"):
+		toggle_fullscreen()
+
+func _on_FullscreenButton_pressed():
+	toggle_fullscreen()
+	
+func toggle_fullscreen():
+	OS.window_fullscreen = not OS.window_fullscreen
+#	resize()
+	
+func resize():
+	var new_size = get_node("/root").size#OS.get_real_window_size()
+	find_node("VBoxContainer").rect_size = new_size
+	find_node("VBoxContainer").rect_size = new_size
+		
+func _on_SettingsButton_pressed():
+	pass

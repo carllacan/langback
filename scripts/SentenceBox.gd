@@ -59,6 +59,8 @@ func _on_text_changed():
 		else:
 			find_node("Indicator").text = "NOK"
 			sentence_container.add_stylebox_override("panel",WrongStyle)
+			
+	
 
 func on_completion():
 	find_node("Indicator").text = "Done!"
