@@ -8,14 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Sentence",
+"language": "GDScript",
+"path": "res://scripts/Sentence.gd"
+}, {
+"base": "Node",
+"class": "Text",
+"language": "GDScript",
+"path": "res://scripts/Text.gd"
+} ]
 _global_script_class_icons={
-
+"Sentence": "",
+"Text": ""
 }
 
 [application]
 
-config/name="translate"
+config/name="TranslateIt"
+config/description="Get instant feedback when you try to write on the language you are learning."
 run/main_scene="res://scenes/TextEntry.tscn"
 config/icon="res://icon.png"
 

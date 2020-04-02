@@ -1,0 +1,1 @@
+{"Title":"Die verlorene Revolution (short)","Language":"de","Sentences":[{"Original":"Die verlorene Revolution.","Translation":"The lost revolution.","Done":false}]}

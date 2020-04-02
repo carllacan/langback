@@ -245,7 +245,6 @@ margin_top = 6.0
 margin_right = 72.0
 margin_bottom = 29.0
 hint_tooltip = "MyMemory only allows 1000 translated words a day."
-mouse_filter = 1
 text = "Words: 0"
 
 [node name="ProgressWindow" type="PanelContainer" parent="CenterContainer"]

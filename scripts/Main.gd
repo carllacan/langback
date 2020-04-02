@@ -9,7 +9,7 @@ const REPLACEMENTS = {"’": "'",
 #var title = ""
 var language
 var sentences = []
-var text_info = {}
+#var text_info = {}
 var current_window
 
 onready var main_menu = find_node("MainMenu")
@@ -26,8 +26,8 @@ func _ready():
 	
 	language_menu.connect("language_selected", self, "_on_language_selection")
 	load_menu.connect("text_chosen", self, "_on_text_choice")
-	load_menu.connect("text_reset", self, "_on_text_reset")
-	sentences_window.connect("sentence_done", self, "_on_sentence_done")
+#	load_menu.connect("text_reset", self, "_on_text_reset")
+#	sentences_window.connect("sentence_done", self, "_on_sentence_done")
 	
 	main_menu.hide()
 	load_menu.hide()
@@ -54,8 +54,9 @@ func _create():
 
 	print("Translating...")
 
-	text_input_window.hide()
-	progress_window.show()
+#	text_input_window.hide()
+#	progress_window.show()
+	change_window(progress_window)
 	
 	for c in REPLACEMENTS:
 		text = text.replace(c, REPLACEMENTS[c])
@@ -93,7 +94,7 @@ func _on_translation_completion():
 		print("Original:\t" + sentence_pair[0])
 		print("Translation:\t" + sentence_pair[1])
 
-#	var text_info = {}
+	var text_info = {}
 	text_info["Title"] = find_node("TitleEdit").text
 	text_info["Language"] = language
 	text_info["Sentences"] = []
@@ -104,11 +105,15 @@ func _on_translation_completion():
 		text_info["Sentences"].append(sentence_info)
 		
 		
-	save_text(text_info)
+	var text = Text.new(text_info)
+	text.save()
+#	save_text(text_info) TODO: user objects for this!
 	
-	progress_window.hide()
-	sentences_window.show()
-	sentences_window.add_sentences(text_info["Sentences"])
+#	progress_window.hide()
+#	sentences_window.show()
+#	sentences_window.add_sentences(text_info["Sentences"])
+#	sentences_window.add_sentences(text.sentences)
+	_on_text_choice(text)
 
 
 func translate_sentence(sentence, origin, target):
@@ -152,35 +157,35 @@ func _on_language_selection(lang):
 	language = lang
 	change_window(text_input_window)
 
-func make_filename(title):
-	var fn = title
-	var to_remove = ".,/ \\$%"
-	for ch in to_remove:
-		fn = fn.replace(ch, "")
-	return fn.substr(0, 15) + ".json"
-		
-func save_text(text_info):
-	var saved_texts = File.new()
-	var fn = make_filename(text_info["Title"])
-	saved_texts.open("res://saved_texts/" + fn, File.WRITE)
-	saved_texts.store_string(JSON.print(text_info))
-	saved_texts.close()
-	# TODO: if file exists add a number
-		
+#func make_filename(title):
+#	var fn = title
+#	var to_remove = ".,/ \\$%"
+#	for ch in to_remove:
+#		fn = fn.replace(ch, "")
+#	return fn.substr(0, 15) + ".json"
+#
+#func save_text(text_info):
+#	var saved_texts = File.new()
+#	var fn = make_filename(text_info["Title"])
+#	saved_texts.open("res://saved_texts/" + fn, File.WRITE)
+#	saved_texts.store_string(JSON.print(text_info))
+#	saved_texts.close()
+#	# TODO: if file exists add a number
+#
 
-func _on_text_choice(_text_info):
-	text_info = _text_info
-	sentences_window.add_text_info(text_info)
+func _on_text_choice(text):
+#	text_info = _text_info
+	sentences_window.add_text_info(text)
 	change_window(sentences_window)
 
-func _on_sentence_done(original):
-	for sentence in text_info["Sentences"]:
-		if sentence["Original"] == original:
-			sentence["Done"] = true
-	save_text(text_info)
+#func _on_sentence_done(original):
+#	for sentence in text_info["Sentences"]:
+#		if sentence["Original"] == original:
+#			sentence["Done"] = true
+#	save_text(text_info)
 	
-func _on_text_reset(_text_info):
-	save_text(_text_info)
+#func _on_text_reset(_text_info):
+#	save_text(_text_info)
 
 func split(string, delimiters):
 	# Custom string split function that can use more than one delimiter.
