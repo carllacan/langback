@@ -31,6 +31,10 @@ config/description="Get instant feedback when you try to write on the language y
 run/main_scene="res://scenes/TextEntry.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Settings="*res://scripts/Settings.gd"
+
 [input]
 
 next={

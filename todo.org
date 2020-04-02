@@ -36,10 +36,11 @@
 ** TODO make an animation for the hiding and showing of buttons
 * Settings window
 ** DONE create settings window and button
-** TODO allow language translation selection
+** DONE allow language translation selection
+*** TODO make a selector with flags
 ** TODO allow interface language selection
-** TODO allow option save
-** TODO add fullscreen by default option
+** DONE allow option save
+** DONE add fullscreen by default option
 ** TODO add shortcut customization
 * General
 ** DONE add fullscreen button

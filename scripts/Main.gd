@@ -223,3 +223,5 @@ func resize():
 func _on_SettingsButton_pressed():
 	settings_window.show()
 
+func _on_CheckButton_toggled(button_pressed):
+	Settings.fullscreen = button_pressed
