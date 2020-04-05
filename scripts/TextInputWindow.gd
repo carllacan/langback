@@ -9,6 +9,8 @@ func _ready():
 	title_edit.connect("text_changed", self, "_on_text_change")
 	text_edit.connect("text_changed", self, "_on_text_change")
 	
+	title_edit.focus_next = text_edit.get_path()
+		
 func reset():
 	title_edit.text = ""
 	text_edit.text = ""
@@ -20,6 +22,9 @@ func _on_visibility_change():
 	reset()
 	
 func _on_text_change():
+	update_word_counter()
+	
+func update_word_counter():
 	var num_words = 0
 	# TODO make the multi-delimiter split global and use it here
 	num_words += len(title_edit.text.split(" ", false))
@@ -29,5 +34,6 @@ func _on_text_change():
 #	l.color
 	if num_words > 1000:
 		word_count.add_color_override("font_color", Color.darkred)
+		find_node("WordCounterAnimation").play("excess")
 	else:
 		word_count.add_color_override("font_color", Color())
