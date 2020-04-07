@@ -55,4 +55,6 @@
 ** DONE add "back" buttons
 ** TODO make an animation for the window transitions
 ** TODO move text translation code from main to textinputwindow or progresswindow
+* Extensions
 ** TODO create panelbutton
+** TODO creaste sort_node

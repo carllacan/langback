@@ -48,3 +48,15 @@ func _on_text_choice(text_info):
 #
 #func _on_text_reset(text_info):
 #	emit_signal("text_reset", text_info)
+
+
+func _on_SortByLangButton_pressed():
+	var text_boxes = []
+	for child in text_list.get_children():
+		text_list.remove_child(child)
+		text_boxes.append(child)
+	print(123)
+	for lang in Globals.LANGUAGES:
+		for tb in text_boxes:
+			if tb.text.language == lang:
+				text_list.add_child(tb)
