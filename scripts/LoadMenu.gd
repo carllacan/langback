@@ -26,17 +26,19 @@ func load_saved_texts():
 	while true:
 		var filename = load_dir.get_next()
 
-		if filename == "":
+		if filename == "": # this signals the end of the directory
 			break
 		if filename.ends_with(".json"):
 			var file = File.new()
 			file.open(SAVED_TEXTS_DIR + filename, file.READ)
 			var json_result = JSON.parse(file.get_as_text())
+			file.close()
+			
 			if json_result.error != OK:
+				print("Error while parsing file " + filename)
 				continue
 			var text_info = json_result.result
-
-			file.close()
+			
 			var new_ti = TextItem.instance()
 			text_list.add_child(new_ti)
 			new_ti.load_text_info(text_info)
@@ -51,11 +53,14 @@ func _on_text_choice(text_info):
 
 
 func _on_SortByLangButton_pressed():
+	sort_by_language()
+	
+func sort_by_language():
 	var text_boxes = []
 	for child in text_list.get_children():
 		text_list.remove_child(child)
 		text_boxes.append(child)
-	print(123)
+
 	for lang in Globals.LANGUAGES:
 		for tb in text_boxes:
 			if tb.text.language == lang:

@@ -6,7 +6,13 @@ var language = ""
 var title = ""
 var sentences = []
 
+var created
+var last_played
 var autosave = true # save everytime something changes
+
+func _ready():
+	created = Globals.get_datetime()
+	last_played = Globals.get_datetime()
 
 func _init(text_info):
 	language = text_info["Language"]
@@ -16,6 +22,8 @@ func _init(text_info):
 		sentences.append(new_sentence)
 		new_sentence.connect("done", self, "_on_sentence_change")
 		new_sentence.connect("reset", self, "_on_sentence_change")
+	created = Globals.get_datetime()
+	last_played = Globals.get_datetime()
 		
 #	sentences = text_info["Sentences"]
 	
@@ -36,6 +44,8 @@ func make_filename():
 func make_dict():
 	var text_info = {}
 	text_info["Title"] = title
+	text_info["Creation"] = created
+	text_info["LastPlayed"] = last_played
 	text_info["Language"] = language
 	text_info["Sentences"] = []
 	for sentence in sentences:
@@ -50,7 +60,12 @@ func _on_sentence_change():
 	if autosave:
 		save()		
 
-func save():
+func update_played_date():
+	last_played = Globals.get_datetime()
+	
+func save(update_played_date = true):
+	if update_played_date:
+		update_played_date()
 	var saved_texts = File.new()
 	var fn = make_filename()
 	saved_texts.open("res://saved_texts/" + fn, File.WRITE)
@@ -58,4 +73,5 @@ func save():
 	saved_texts.store_string(JSON.print(make_dict()))
 	saved_texts.close()
 	# TODO: if file exists add a number
+	
 		

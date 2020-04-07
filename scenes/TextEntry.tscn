@@ -145,7 +145,7 @@ size_flags_vertical = 3
 script = ExtResource( 2 )
 
 [node name="SortBar" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/LoadMenu"]
-margin_left = 462.0
+margin_left = 664.0
 margin_right = 824.0
 margin_bottom = 36.0
 size_flags_horizontal = 8
@@ -164,14 +164,16 @@ margin_bottom = 36.0
 text = "Language"
 
 [node name="SortByPlayedButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar"]
+visible = false
 margin_left = 164.0
 margin_right = 277.0
 margin_bottom = 36.0
 text = "Last played"
 
 [node name="SortByCreated" type="Button" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar"]
-margin_left = 281.0
-margin_right = 362.0
+visible = false
+margin_left = 164.0
+margin_right = 245.0
 margin_bottom = 36.0
 text = "Created"
 

@@ -28,7 +28,6 @@ func add_text_info(text):
 
 func add_sentences(_sentences):
 	var last_sb = null
-	var h = 0
 	for sentence in _sentences:
 		var new_sb = SentenceBox.instance()
 		listcontainer.add_child(new_sb)
@@ -38,8 +37,6 @@ func add_sentences(_sentences):
 			last_sb.set_focus_next(new_sb)
 		last_sb = new_sb
 		
-		print(h)
-		h += new_sb.get_rect().size[1]
 		
 	# Set focus on the first undone sentence_box
 	for sb in listcontainer.get_children():

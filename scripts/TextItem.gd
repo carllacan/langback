@@ -8,10 +8,18 @@ func load_text_info(text_info):
 	text = Text.new(text_info)
 	find_node("OriginalLanguage").text = text.language
 	find_node("TextTitle").text = text.title
-	var sentence_num = len(text.sentences)
-	find_node("SentenceNumber").text = "%s sentences" % sentence_num
+	var total = len(text.sentences)
+	var done = 0
+	for s in text.sentences:
+		if s.done:
+			done += 1
+	var sentences_text = "%s//%s sentences completed"
+	find_node("SentenceNumber").text =  sentences_text % [done, total]
 
 	find_node("Flag").texture = load("res://flags/%s.png" % text.language)
+	
+	find_node("Created").text = "Created: " + Globals.datetime_to_str(text.created)
+	find_node("LastPlayed").text = "Last played: " + Globals.datetime_to_str(text.last_played)
 	
 
 func _on_ContinueButton_pressed():

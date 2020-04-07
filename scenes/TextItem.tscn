@@ -15,7 +15,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 437.0
+margin_right = 687.0
 margin_bottom = 76.0
 size_flags_horizontal = 3
 
@@ -65,32 +65,55 @@ text = "Target"
 
 [node name="CentralContainer" type="PanelContainer" parent="HBoxContainer"]
 margin_left = 84.0
-margin_right = 340.0
+margin_right = 590.0
 margin_bottom = 76.0
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CentralContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/CentralContainer"]
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 251.0
+margin_right = 501.0
 margin_bottom = 71.0
 
-[node name="TextTitle" type="Label" parent="HBoxContainer/CentralContainer/VBoxContainer"]
-margin_right = 246.0
+[node name="TitleAndSentences" type="VBoxContainer" parent="HBoxContainer/CentralContainer/HBoxContainer"]
+margin_right = 167.0
+margin_bottom = 66.0
+
+[node name="TextTitle" type="Label" parent="HBoxContainer/CentralContainer/HBoxContainer/TitleAndSentences"]
+margin_right = 167.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 3 )
 text = "Title of the text"
 clip_text = true
 
-[node name="SentenceNumber" type="Label" parent="HBoxContainer/CentralContainer/VBoxContainer"]
+[node name="SentenceNumber" type="Label" parent="HBoxContainer/CentralContainer/HBoxContainer/TitleAndSentences"]
 margin_top = 30.0
-margin_right = 246.0
+margin_right = 167.0
 margin_bottom = 53.0
-text = "Number of sentences in the text"
+text = "Sentences completed:"
+
+[node name="Data" type="VBoxContainer" parent="HBoxContainer/CentralContainer/HBoxContainer"]
+margin_left = 401.0
+margin_right = 496.0
+margin_bottom = 66.0
+size_flags_horizontal = 10
+
+[node name="Created" type="Label" parent="HBoxContainer/CentralContainer/HBoxContainer/Data"]
+margin_right = 95.0
+margin_bottom = 23.0
+text = "Created: "
+align = 2
+
+[node name="LastPlayed" type="Label" parent="HBoxContainer/CentralContainer/HBoxContainer/Data"]
+margin_top = 27.0
+margin_right = 95.0
+margin_bottom = 50.0
+text = "Last played: "
+align = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 344.0
-margin_right = 437.0
+margin_left = 594.0
+margin_right = 687.0
 margin_bottom = 76.0
 rect_min_size = Vector2( 80, 0 )
 

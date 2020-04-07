@@ -5,7 +5,7 @@
 ** DONE show language flag when selecting texts
 ** DONE add reset button to texts
 ** DONE make list scrollable
-** TODO sort saved texts by language
+** DONE sort saved texts by language
 *** TODO sort saved texts by last time worked on
 *** TODO sort by done and not done
 *** TODO sort by created
@@ -14,6 +14,7 @@
 ** TODO allow adding sentences to texts
 * Create Text Window
 ** DONE substitute text buttons for flags when choosing language
+** DONE save creation date
 ** TODO allow user to select translation language
 ** TODO count words translated per day by playerAPI
 ** TODO detect when API refuses to translate more words and show a message
@@ -29,6 +30,7 @@
 ** TODO paint wrong characters in red
 ** DONE scroll to next sentence when focus changes
 *** TODO make an animated scrolling
+** DONE save last played date
 ** DONE move hint button to side of the sentencebox
 ** DONE add reset button to sentencebox
 ** DONE bug: buttons dissappear when pressed`and have no effect!
