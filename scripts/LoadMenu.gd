@@ -55,6 +55,12 @@ func _on_text_choice(text_info):
 func _on_SortByLangButton_pressed():
 	sort_by_language()
 	
+func _on_SortByPlayedButton_pressed():
+	sort_by_lastplayed(false)
+
+func _on_SortByCreated_pressed():
+	sort_by_created(false)
+
 func sort_by_language():
 	var text_boxes = []
 	for child in text_list.get_children():
@@ -65,3 +71,25 @@ func sort_by_language():
 		for tb in text_boxes:
 			if tb.text.language == lang:
 				text_list.add_child(tb)
+
+func sort_by_created(last_first=false):
+	var text_boxes = []
+	for child in text_list.get_children():
+		text_list.remove_child(child)
+		text_boxes.append(child)
+
+	text_boxes.sort_custom(Globals, "compare_text_box_creation_dates")
+	for tb in text_boxes:
+		text_list.add_child(tb)
+		
+func sort_by_lastplayed(last_first=false):
+	var text_boxes = []
+	for child in text_list.get_children():
+		text_list.remove_child(child)
+		text_boxes.append(child)
+
+	text_boxes.sort_custom(Globals, "compare_text_box_lastplayed_dates")
+	for tb in text_boxes:
+		text_list.add_child(tb)
+
+

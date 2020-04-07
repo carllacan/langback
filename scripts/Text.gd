@@ -22,8 +22,14 @@ func _init(text_info):
 		sentences.append(new_sentence)
 		new_sentence.connect("done", self, "_on_sentence_change")
 		new_sentence.connect("reset", self, "_on_sentence_change")
-	created = Globals.get_datetime()
-	last_played = Globals.get_datetime()
+	if "Creation" in text_info:
+		created = text_info["Creation"]
+	else:
+		created = Globals.get_datetime()
+	if "LastPlayed" in text_info:
+		last_played = text_info["LastPlayed"]
+	else:
+		last_played = Globals.get_datetime()
 		
 #	sentences = text_info["Sentences"]
 	

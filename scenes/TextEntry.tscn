@@ -145,7 +145,7 @@ size_flags_vertical = 3
 script = ExtResource( 2 )
 
 [node name="SortBar" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/LoadMenu"]
-margin_left = 664.0
+margin_left = 462.0
 margin_right = 824.0
 margin_bottom = 36.0
 size_flags_horizontal = 8
@@ -164,16 +164,14 @@ margin_bottom = 36.0
 text = "Language"
 
 [node name="SortByPlayedButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar"]
-visible = false
 margin_left = 164.0
 margin_right = 277.0
 margin_bottom = 36.0
 text = "Last played"
 
 [node name="SortByCreated" type="Button" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar"]
-visible = false
-margin_left = 164.0
-margin_right = 245.0
+margin_left = 281.0
+margin_right = 362.0
 margin_bottom = 36.0
 text = "Created"
 
@@ -574,6 +572,8 @@ text = "Close"
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/MainMenu/CreateButton" to="." method="_on_CreateButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/MainMenu/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar/SortByLangButton" to="GUI/VBoxContainer/CenterContainer/LoadMenu" method="_on_SortByLangButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar/SortByPlayedButton" to="GUI/VBoxContainer/CenterContainer/LoadMenu" method="_on_SortByPlayedButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar/SortByCreated" to="GUI/VBoxContainer/CenterContainer/LoadMenu" method="_on_SortByCreated_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/MarginContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LanguageMenu/VBoxContainer/MarginContainer2/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons/CreateButton" to="." method="_create"]

@@ -6,9 +6,9 @@
 ** DONE add reset button to texts
 ** DONE make list scrollable
 ** DONE sort saved texts by language
-*** TODO sort saved texts by last time worked on
+*** DONE sort saved texts by last time worked on
 *** TODO sort by done and not done
-*** TODO sort by created
+*** DONE sort by created
 ** TODO allow text deletion
 ** TODO allow text edit
 ** TODO allow adding sentences to texts
@@ -42,6 +42,7 @@
 ** TODO make mousewheel work even when above textedit
 ** TODO add a quit btton
 ** TODO make it fill almost all the window
+** DONE save last played datetime
 * Settings window
 ** DONE create settings window and button
 ** DONE allow language translation selection

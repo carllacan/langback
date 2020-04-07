@@ -21,7 +21,9 @@ func load_text_info(text_info):
 	find_node("Created").text = "Created: " + Globals.datetime_to_str(text.created)
 	find_node("LastPlayed").text = "Last played: " + Globals.datetime_to_str(text.last_played)
 	
-
+func get_lastplayed():
+	return text.last_played
+	
 func _on_ContinueButton_pressed():
 	emit_signal("chosen", text)
 
