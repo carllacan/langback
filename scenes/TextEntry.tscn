@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/LoadMenu.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://icons/gear.svg" type="Texture" id=10]
 [ext_resource path="res://scripts/SettingsWindow.gd" type="Script" id=11]
 [ext_resource path="res://scripts/Popups.gd" type="Script" id=12]
+[ext_resource path="res://scripts/TextBox.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "excess"
@@ -136,6 +137,7 @@ rect_min_size = Vector2( 420, 120 )
 text = "Load a text"
 
 [node name="LoadMenu" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
+visible = false
 margin_left = 100.0
 margin_top = 30.0
 margin_right = 924.0
@@ -170,10 +172,12 @@ text = "Cancel"
 
 [node name="LanguageMenu" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
 visible = false
-margin_left = 100.0
-margin_top = 30.0
-margin_right = 924.0
-margin_bottom = 570.0
+margin_left = 477.0
+margin_top = 253.0
+margin_right = 547.0
+margin_bottom = 347.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageMenu"]
@@ -239,10 +243,11 @@ script = ExtResource( 4 )
 [node name="WordCounterAnimation" type="AnimationPlayer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
 anims/excess = SubResource( 1 )
 
-[node name="TextTitle" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
+[node name="TextTitle" type="TextEdit" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
 margin_right = 824.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 720, 75 )
+script = ExtResource( 13 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/TextTitle"]
 margin_left = 5.0
@@ -269,7 +274,7 @@ caret_blink = true
 [node name="TextContent2" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
 margin_top = 79.0
 margin_right = 824.0
-margin_bottom = 462.0
+margin_bottom = 500.0
 rect_min_size = Vector2( 720, 320 )
 size_flags_vertical = 3
 
@@ -277,7 +282,7 @@ size_flags_vertical = 3
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 819.0
-margin_bottom = 378.0
+margin_bottom = 416.0
 
 [node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/TextContent2/VBoxContainer"]
 margin_right = 814.0
@@ -288,16 +293,16 @@ text = "Write here your text"
 [node name="TextEdit" type="TextEdit" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/TextContent2/VBoxContainer"]
 margin_top = 27.0
 margin_right = 814.0
-margin_bottom = 373.0
+margin_bottom = 411.0
 size_flags_vertical = 3
 text = "Die Herbstrevolution von 1989 wurde nie vollendet! Im Grunde war es danach vorbei."
 wrap_enabled = true
 caret_blink = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
-margin_top = 466.0
+margin_top = 504.0
 margin_right = 824.0
-margin_bottom = 502.0
+margin_bottom = 540.0
 size_flags_horizontal = 5
 
 [node name="Container" type="Container" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer"]
@@ -376,7 +381,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 5
 
 [node name="SentenceList" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer"]
-visible = false
 margin_left = 100.0
 margin_top = 30.0
 margin_right = 924.0
@@ -388,7 +392,7 @@ script = ExtResource( 5 )
 
 [node name="VBox" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/SentenceList"]
 margin_right = 824.0
-margin_bottom = 54.0
+margin_bottom = 80.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/SentenceList/VBox"]

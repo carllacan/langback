@@ -11,7 +11,9 @@ var SentenceBox = load("res://scenes/SentenceBox.tscn")
 
 func _ready():
 	connect("visibility_changed", self, "_on_visibility_change")
+	follow_focus = true
 	
+
 func _on_visibility_change():
 	if visible:
 		return
@@ -26,6 +28,7 @@ func add_text_info(text):
 
 func add_sentences(_sentences):
 	var last_sb = null
+	var h = 0
 	for sentence in _sentences:
 		var new_sb = SentenceBox.instance()
 		listcontainer.add_child(new_sb)
@@ -34,6 +37,9 @@ func add_sentences(_sentences):
 		if last_sb != null:
 			last_sb.set_focus_next(new_sb)
 		last_sb = new_sb
+		
+		print(h)
+		h += new_sb.get_rect().size[1]
 		
 	# Set focus on the first undone sentence_box
 	for sb in listcontainer.get_children():
@@ -44,6 +50,9 @@ func add_sentences(_sentences):
 func _when_a_sentence_grabs_focus():
 	for sb in listcontainer.get_children():
 		sb._when_other_sentence_grabs_focus()
+		
+
+	
 			
 #func _on_sentence_done(original):
 #	emit_signal("sentence_done", original)

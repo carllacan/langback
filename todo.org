@@ -27,7 +27,8 @@
 ** TODO allow user to complete whole words
 ** TODO count words translated per day by player
 ** TODO paint wrong characters in red
-** TODO slide next sentence to screen center
+** DONE scroll to next sentence when focus changes
+*** TODO make an animated scrolling
 ** DONE move hint button to side of the sentencebox
 ** DONE add reset button to sentencebox
 ** DONE bug: buttons dissappear when pressed`and have no effect!
@@ -54,3 +55,4 @@
 ** DONE add "back" buttons
 ** TODO make an animation for the window transitions
 ** TODO move text translation code from main to textinputwindow or progresswindow
+** TODO create panelbutton
