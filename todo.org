@@ -4,7 +4,7 @@
 * Load Text Window
 ** DONE show language flag when selecting texts
 ** DONE add reset button to texts
-** TODO make list scrollable
+** DONE make list scrollable
 ** TODO sort saved texts by language
 *** TODO sort saved texts by last time worked on
 *** TODO sort by done and not done
@@ -35,6 +35,10 @@
 ** DONE make sentence box change colour to green when done
 ** DONE hide the next button when not focused
 ** TODO make an animation for the hiding and showing of buttons
+** TODO hide scrollbar
+** TODO make mousewheel work even when above textedit
+** TODO add a quit btton
+** TODO make it fill almost all the window
 * Settings window
 ** DONE create settings window and button
 ** DONE allow language translation selection

@@ -80,10 +80,13 @@ func on_completion():
 func grab_focus():
 	translation_box.grab_focus()
 	
+func has_focus():
+	return translation_box.has_focus()
+	
 func set_focus_next(_next_sentence_box):
 	next_sentence_box = _next_sentence_box
-	translation_box.set_focus_next(next_sentence_box.get_path())
-
+	translation_box.set_focus_next(next_sentence_box.translation_box.get_path()) # useless?
+	
 func get_correct_characters():
 	var correct = 0
 	for c in translation_box.text:
@@ -104,6 +107,12 @@ func _input(event):
 	if event.is_action_pressed("next"):
 		if translation_box.has_focus():
 			show_hint()
+#	if event.is_action_pressed("ui_focus_next") and has_focus():
+#		if next_sentence_box != null:
+#			next_sentence_box.grab_focus()
+#		get_tree().set_input_as_handled()
+	if event.is_action_pressed("ui_accept") and has_focus(): # handle input
+		get_tree().set_input_as_handled()
 			
 func _on_ResetButton_pressed():
 	reset()

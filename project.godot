@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Text",
 "language": "GDScript",
 "path": "res://scripts/Text.gd"
+}, {
+"base": "TextEdit",
+"class": "TextBox",
+"language": "GDScript",
+"path": "res://scripts/TextBox.gd"
 } ]
 _global_script_class_icons={
 "Sentence": "",
-"Text": ""
+"Text": "",
+"TextBox": ""
 }
 
 [application]
