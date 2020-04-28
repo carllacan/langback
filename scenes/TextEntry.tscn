@@ -281,17 +281,19 @@ script = ExtResource( 4 )
 [node name="WordCounterAnimation" type="AnimationPlayer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
 anims/excess = SubResource( 1 )
 
-[node name="TextTitle" type="TextEdit" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
+[node name="TextTitle" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
 margin_right = 824.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 720, 75 )
-script = ExtResource( 13 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/TextTitle"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 819.0
 margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/TextTitle/VBoxContainer"]
 margin_right = 814.0
@@ -308,6 +310,7 @@ size_flags_vertical = 3
 text = "Die verlorene Revolution"
 wrap_enabled = true
 caret_blink = true
+script = ExtResource( 13 )
 
 [node name="TextContent2" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
 margin_top = 79.0
@@ -336,6 +339,7 @@ size_flags_vertical = 3
 text = "Die Herbstrevolution von 1989 wurde nie vollendet! Im Grunde war es danach vorbei."
 wrap_enabled = true
 caret_blink = true
+script = ExtResource( 13 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
 margin_top = 504.0

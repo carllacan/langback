@@ -15,8 +15,8 @@ extends Node2D
 	
 #var title = ""
 var language
-var sentences = []
-var text_title = ""
+#var sentences = []
+#var text_title = ""
 var current_window
 
 onready var main_menu = find_node("MainMenu")
@@ -57,8 +57,6 @@ func change_window(new):
 	current_window.show()
 	
 func _create_text(text_info):
-	text_title = text_info[0] #####
-	var text = text_info[1] #####
 
 	print("Translating...")
 

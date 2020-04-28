@@ -18,7 +18,7 @@ func _on_visibility_change():
 	if visible:
 		return
 	for sentence_box in listcontainer.get_children():
-		print(sentence_box.translation)
+#		print(sentence_box.translation)
 		listcontainer.remove_child(sentence_box)
 		sentence_box.queue_free()
 	

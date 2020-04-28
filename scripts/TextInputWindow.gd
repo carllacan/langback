@@ -11,7 +11,7 @@ func _ready():
 	title_edit.connect("text_changed", self, "_on_text_change")
 	text_edit.connect("text_changed", self, "_on_text_change")
 	
-	title_edit.focus_next = text_edit.get_path()
+	title_edit.set_focus_next(text_edit.get_path())
 		
 func reset():
 	title_edit.text = ""
@@ -41,6 +41,16 @@ func update_word_counter():
 	else:
 		word_count.add_color_override("font_color", Color())
 
+func _input(event):
+	if event.is_action_pressed("ui_focus_prev") and has_focus():
+		if focus_previous != "":
+			print(123)
+#			get_node(focus_previous).grab_focus()
+#		get_tree().set_input_as_handled()
+#	elif event.is_action_pressed("ui_focus_next") and has_focus():
+#		if focus_next != "":
+#			get_node(focus_next).grab_focus()
+#		get_tree().set_input_as_handled()
 
 func _on_CreateButton_pressed():
 	emit_signal("translation_requested", [title_edit.text, text_edit.text])
