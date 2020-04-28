@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "TextBox",
 "language": "GDScript",
 "path": "res://scripts/TextBox.gd"
+}, {
+"base": "Node",
+"class": "TranslationRequest",
+"language": "GDScript",
+"path": "res://scripts/translation_request.gd"
 } ]
 _global_script_class_icons={
 "Sentence": "",
 "Text": "",
-"TextBox": ""
+"TextBox": "",
+"TranslationRequest": ""
 }
 
 [application]

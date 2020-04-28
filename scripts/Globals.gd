@@ -56,6 +56,17 @@ func load_json(filepath):
 		print("\tAt line: " + str(json_parsing.error_line))
 		print("==================================================")
 	
+func split(string, delimiters):
+	# Custom string split function that can use more than one delimiter.
+	var parts = []
+	for c in string:
+		if len(parts) == 0 or parts[-1][-1] in delimiters:
+			parts.append('')
+		parts[-1] += c
+	return parts
+	
+#############################################
+	
 func _ready():
 	LANGUAGES = load_json("res://info/languages.json")
 	print(LANGUAGES)

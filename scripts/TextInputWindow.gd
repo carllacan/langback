@@ -43,4 +43,4 @@ func update_word_counter():
 
 
 func _on_CreateButton_pressed():
-	emit_signal("translation_requested", [text_edit.text])
+	emit_signal("translation_requested", [title_edit.text, text_edit.text])
