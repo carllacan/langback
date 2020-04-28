@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+signal translation_requested(text_info)
+
 onready var title_edit = find_node("TitleEdit")
 onready var text_edit = find_node("TextEdit")
 onready var word_count = find_node("WordCounter")
@@ -23,6 +25,7 @@ func _on_visibility_change():
 	
 func _on_text_change():
 	update_word_counter()
+
 	
 func update_word_counter():
 	var num_words = 0
@@ -37,3 +40,7 @@ func update_word_counter():
 		find_node("WordCounterAnimation").play("excess")
 	else:
 		word_count.add_color_override("font_color", Color())
+
+
+func _on_CreateButton_pressed():
+	emit_signal("translation_requested", [text_edit.text])

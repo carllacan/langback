@@ -137,6 +137,7 @@ rect_min_size = Vector2( 420, 120 )
 text = "Load a text"
 
 [node name="LoadMenu" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
+visible = false
 margin_left = 100.0
 margin_top = 30.0
 margin_right = 924.0
@@ -145,7 +146,7 @@ size_flags_vertical = 3
 script = ExtResource( 2 )
 
 [node name="SortBar" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/LoadMenu"]
-margin_left = 462.0
+margin_left = 371.0
 margin_right = 824.0
 margin_bottom = 36.0
 size_flags_horizontal = 8
@@ -174,6 +175,12 @@ margin_left = 281.0
 margin_right = 362.0
 margin_bottom = 36.0
 text = "Created"
+
+[node name="SortByProgress" type="Button" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar"]
+margin_left = 366.0
+margin_right = 453.0
+margin_bottom = 36.0
+text = "Progress"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer/LoadMenu"]
 margin_top = 40.0
@@ -574,9 +581,10 @@ text = "Close"
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar/SortByLangButton" to="GUI/VBoxContainer/CenterContainer/LoadMenu" method="_on_SortByLangButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar/SortByPlayedButton" to="GUI/VBoxContainer/CenterContainer/LoadMenu" method="_on_SortByPlayedButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar/SortByCreated" to="GUI/VBoxContainer/CenterContainer/LoadMenu" method="_on_SortByCreated_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar/SortByProgress" to="GUI/VBoxContainer/CenterContainer/LoadMenu" method="_on_SortByProgress_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/MarginContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LanguageMenu/VBoxContainer/MarginContainer2/CancelButton" to="." method="_on_CancelButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons/CreateButton" to="." method="_create"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons/CreateButton" to="GUI/VBoxContainer/CenterContainer/TextInputWindow" method="_on_CreateButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons/ResetButton" to="GUI/VBoxContainer/CenterContainer/TextInputWindow" method="reset"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/SentenceList/VBox/CancelButton" to="." method="_on_CancelButton_pressed"]

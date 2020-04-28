@@ -1,10 +1,10 @@
 extends Node
 
-const LANGUAGES = {"de":"Deutsch",
-				   "fr":"Français",
-				   "it":"Italiano",
-				   "pt":"Portuguese",
-				   "es":"Spanish"}
+var LANGUAGES = {"de":"Deutsch",
+				 "fr":"Français",
+				 "it":"Italiano",
+				 "pt":"Portuguese",
+				 "es":"Spanish"}
 				
 const DATE_FIELDS = ["year", "month", "day", "hour","minute","second"]	
 
@@ -36,3 +36,27 @@ func compare_text_box_lastplayed_dates(a, b):
 		elif a.text.last_played[field] > b.text.last_played[field]:
 			return false
 	return false
+	
+func compare_text_box_progress(a, b):
+	if a.text.get_progress() < b.text.get_progress():
+		return true
+	return false
+	
+func load_json(filepath):
+	var json_file = File.new()
+	json_file.open(filepath, File.READ)
+	var json_text = json_file.get_as_text()
+	var json_parsing = JSON.parse(json_text)
+	if json_parsing.error == OK:
+		return json_parsing.result
+	else:
+		print("==================================================")
+		print("Error loading JSON file at " + filepath)
+		print('\t' + json_parsing.error_string)
+		print("\tAt line: " + str(json_parsing.error_line))
+		print("==================================================")
+	
+func _ready():
+	LANGUAGES = load_json("res://info/languages.json")
+	print(LANGUAGES)
+	

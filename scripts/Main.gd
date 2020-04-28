@@ -1,10 +1,17 @@
 extends Node2D
 
-const SENTENCE_DELIMITERS = ".!?"
-const REPLACEMENTS = {"’": "'",
-					  "\n":"",
-					"\r":"",
-					  }
+const SENTENCE_DELIMITERS = ".!?…«»\"„“"
+const REPLACEMENTS = {
+	"’": "'",
+	"\n":".",
+	"\r":".",
+ }
+					
+const TRANSLATION_REPLACEMENTS = {
+	"…":"...",
+	"&#39;":"'",
+	"&quot":"",
+}
 	
 #var title = ""
 var language
@@ -24,10 +31,12 @@ onready var settings_window = find_node("SettingsWindow")
 
 
 func _ready():
+
 	$HTTPRequest.connect("request_completed", self, "_on_request_completed")
 	
 	language_menu.connect("language_selected", self, "_on_language_selection")
 	load_menu.connect("text_chosen", self, "_on_text_choice")
+	text_input_window.connect("translation_requested", self, "_create_text")
 #	load_menu.connect("text_reset", self, "_on_text_reset")
 #	sentences_window.connect("sentence_done", self, "_on_sentence_done")
 	
@@ -43,16 +52,15 @@ func _ready():
 	
 	resize()
 
-	
-
 func change_window(new):
 	current_window.hide()
 	current_window = new
 	current_window.show()
 	
-func _create():
-	var text_box = find_node("TextEdit")
-	var text = text_box.text
+func _create_text(text_info):
+#	var text_box = find_node("TextEdit")
+	var text = text_info[0]
+
 #	var url = "https://yandextranslatezakutynskyv1.p.rapidapi.com"
 #	$HTTPRequest.request(url, headers, false, HTTPClient.METHOD_POST, "translate")
 
@@ -99,13 +107,15 @@ func _on_translation_completion():
 		print("Translation:\t" + sentence_pair[1])
 
 	var text_info = {}
-	text_info["Title"] = find_node("TitleEdit").text
+	text_info["Title"] = find_node("TitleEdit").text ##############3
 	text_info["Language"] = language
 	text_info["Sentences"] = []
 	for sentence in sentences:
 		var sentence_info = {"Original":sentence[0],
 							 "Translation":sentence[1],
 							 "Done":false}
+		if len(sentence_info["Translation"]) < 2:
+			continue
 		text_info["Sentences"].append(sentence_info)
 		
 		
@@ -147,7 +157,12 @@ func _on_request_completed(result, response_code, headers, body):
 		return
 
 	var translation = parsed_res["responseData"]["translatedText"]
-	var original = parsed_res["matches"][0]["segment"]
+#	var original = parsed_res["matches"][0]["segment"]
+
+	for ch in TRANSLATION_REPLACEMENTS:
+		translation = translation.replace(ch, TRANSLATION_REPLACEMENTS[ch])
+	translation = translation.lstrip(" ")
+	translation = translation.rstrip(" ")
 
 	add_translation(translation)
 

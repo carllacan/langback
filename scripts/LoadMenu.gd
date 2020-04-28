@@ -61,6 +61,9 @@ func _on_SortByPlayedButton_pressed():
 func _on_SortByCreated_pressed():
 	sort_by_created(false)
 
+func _on_SortByProgress_pressed():
+	sort_by_progress(false)
+
 func sort_by_language():
 	var text_boxes = []
 	for child in text_list.get_children():
@@ -89,6 +92,16 @@ func sort_by_lastplayed(last_first=false):
 		text_boxes.append(child)
 
 	text_boxes.sort_custom(Globals, "compare_text_box_lastplayed_dates")
+	for tb in text_boxes:
+		text_list.add_child(tb)
+
+func sort_by_progress(last_first=false):
+	var text_boxes = []
+	for child in text_list.get_children():
+		text_list.remove_child(child)
+		text_boxes.append(child)
+
+	text_boxes.sort_custom(Globals, "compare_text_box_progress")
 	for tb in text_boxes:
 		text_list.add_child(tb)
 

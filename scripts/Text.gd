@@ -80,4 +80,10 @@ func save(update_played_date = true):
 	saved_texts.close()
 	# TODO: if file exists add a number
 	
-		
+func get_progress():
+	var done = 0
+	for s in sentences:
+		if s.done:
+			done += 1
+	var total = len(sentences)
+	return done
