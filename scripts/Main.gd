@@ -22,10 +22,12 @@ var current_window
 onready var main_menu = find_node("MainMenu")
 onready var load_menu = find_node("LoadMenu")
 onready var language_menu = find_node("LanguageMenu")
+onready var table_create_window = find_node("TableCreateWindow")
 onready var text_input_window = find_node("TextInputWindow")
 onready var progress_window = find_node("ProgressWindow")
 onready var progress_bar = find_node("ProgressBar")
 onready var sentences_window = find_node("SentenceList")
+onready var table_play_window = find_node("TablePlayWindow")
 onready var settings_window = find_node("SettingsWindow")
 
 
@@ -37,14 +39,16 @@ func _ready():
 	language_menu.connect("language_selected", self, "_on_language_selection")
 	load_menu.connect("text_chosen", self, "_on_text_choice")
 	text_input_window.connect("translation_requested", self, "_create_text")
-
+	table_create_window.connect("table_created", self, "_on_table_creation")
 	
 	main_menu.hide()
 	load_menu.hide()
 	language_menu.hide()
+	table_create_window.hide()
 	text_input_window.hide()
 	progress_window.hide()
 	sentences_window.hide()
+	table_play_window.hide()
 	
 	current_window = main_menu
 	current_window.show()
@@ -212,3 +216,14 @@ func _on_SettingsButton_pressed():
 
 func _on_CheckButton_toggled(button_pressed):
 	Settings.fullscreen = button_pressed
+
+
+func _on_CreateTableButton_pressed():
+	change_window(table_create_window)
+	
+func _on_TableButton_pressed():
+	pass # Replace with function body.
+
+func _on_table_creation(table):
+	table_play_window.load_table(table)
+	change_window(table_play_window)

@@ -9,7 +9,7 @@ onready var text_list = find_node("TextList")
 
 func _ready():
 	connect("visibility_changed", self, "_on_visibility_change")
-	
+		
 func _on_visibility_change():
 	if visible: # if show 
 		load_saved_texts()

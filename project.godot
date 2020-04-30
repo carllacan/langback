@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://scripts/Sentence.gd"
 }, {
 "base": "Node",
+"class": "Table",
+"language": "GDScript",
+"path": "res://scripts/Table.gd"
+}, {
+"base": "Node",
 "class": "Text",
 "language": "GDScript",
 "path": "res://scripts/Text.gd"
@@ -31,6 +36,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Sentence": "",
+"Table": "",
 "Text": "",
 "TextBox": "",
 "TranslationRequest": ""

@@ -12,7 +12,7 @@ var autosave = true # save everytime something changes
 
 func _ready():
 	created = Globals.get_datetime()
-	last_played = Globals.get_datetime()
+	last_played = Globals.get_datetime() # TODO: allow empty
 
 func _init(text_info):
 	language = text_info["Language"]
@@ -72,12 +72,12 @@ func update_played_date():
 func save(update_played_date = true):
 	if update_played_date:
 		update_played_date()
-	var saved_texts = File.new()
+	var savefile = File.new()
 	var fn = make_filename()
-	saved_texts.open("res://saved_texts/" + fn, File.WRITE)
+	savefile.open("res://saved_texts/" + fn, File.WRITE)
 	
-	saved_texts.store_string(JSON.print(make_dict()))
-	saved_texts.close()
+	savefile.store_string(JSON.print(make_dict()))
+	savefile.close()
 	# TODO: if file exists add a number
 	
 func get_progress():
