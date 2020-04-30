@@ -21,6 +21,7 @@ var current_window
 
 onready var main_menu = find_node("MainMenu")
 onready var load_menu = find_node("LoadMenu")
+onready var table_load_menu = find_node("TableLoadMenu")
 onready var language_menu = find_node("LanguageMenu")
 onready var table_create_window = find_node("TableCreateWindow")
 onready var text_input_window = find_node("TextInputWindow")
@@ -38,6 +39,7 @@ func _ready():
 	
 	language_menu.connect("language_selected", self, "_on_language_selection")
 	load_menu.connect("text_chosen", self, "_on_text_choice")
+	table_load_menu.connect("table_chosen", self, "_on_table_choice")
 	text_input_window.connect("translation_requested", self, "_create_text")
 	table_create_window.connect("table_created", self, "_on_table_creation")
 	
@@ -190,6 +192,9 @@ func _on_text_choice(text): # rename to load text
 #	text_info = _text_info
 	sentences_window.add_text_info(text)
 	change_window(sentences_window)
+	
+func _on_table_choice(table): # rename to load text
+	_on_table_creation(table)
 
 
 func _on_CancelButton_pressed():
@@ -222,7 +227,7 @@ func _on_CreateTableButton_pressed():
 	change_window(table_create_window)
 	
 func _on_TableButton_pressed():
-	pass # Replace with function body.
+	change_window(table_load_menu)
 
 func _on_table_creation(table):
 	table_play_window.load_table(table)

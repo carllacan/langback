@@ -17,11 +17,6 @@ func _ready():
 func _init(text_info):
 	language = text_info["Language"]
 	title = text_info["Title"]
-	for sentence_info in text_info["Sentences"]:
-		var new_sentence = Sentence.new(sentence_info)
-		sentences.append(new_sentence)
-		new_sentence.connect("done", self, "_on_sentence_change")
-		new_sentence.connect("reset", self, "_on_sentence_change")
 	if "Creation" in text_info:
 		created = text_info["Creation"]
 	else:
