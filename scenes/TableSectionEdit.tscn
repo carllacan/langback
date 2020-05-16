@@ -1,22 +1,24 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://theme/theme.tres" type="Theme" id=1]
 
 [node name="TableSectionEdit" type="PanelContainer"]
-margin_right = 190.0
+margin_right = 200.0
 margin_bottom = 210.0
+rect_min_size = Vector2( 200, 210 )
+theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 187.0
-margin_bottom = 207.0
-
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
-margin_right = 180.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 180, 200 )
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 195.0
+margin_bottom = 205.0
+rect_min_size = Vector2( 190, 200 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Present
 I |do
 You |do

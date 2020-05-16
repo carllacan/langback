@@ -121,6 +121,7 @@ custom_constants/margin_left = 100
 custom_constants/margin_bottom = 30
 
 [node name="MainMenu" type="MarginContainer" parent="GUI/VBoxContainer/CenterContainer"]
+visible = false
 margin_left = 100.0
 margin_top = 30.0
 margin_right = 924.0
@@ -366,7 +367,6 @@ size_flags_horizontal = 4
 text = "Cancel"
 
 [node name="TableCreateWindow" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
-visible = false
 margin_left = 100.0
 margin_top = 30.0
 margin_right = 924.0
@@ -396,21 +396,29 @@ margin_right = 819.0
 margin_bottom = 28.0
 text = "Write the contents of the tables separated by vertical bars, as in the examples"
 
-[node name="SectionsGrid" type="GridContainer" parent="GUI/VBoxContainer/CenterContainer/TableCreateWindow"]
-margin_left = 317.0
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer/TableCreateWindow"]
 margin_top = 84.0
-margin_right = 507.0
-margin_bottom = 294.0
-size_flags_horizontal = 4
-columns = 5
+margin_right = 824.0
+margin_bottom = 462.0
+rect_min_size = Vector2( 0, 300 )
+size_flags_vertical = 7
+scroll_horizontal_enabled = false
 
-[node name="TableSectionEdit" parent="GUI/VBoxContainer/CenterContainer/TableCreateWindow/SectionsGrid" instance=ExtResource( 17 )]
+[node name="SectionsGrid" type="GridContainer" parent="GUI/VBoxContainer/CenterContainer/TableCreateWindow/ScrollContainer"]
+margin_left = 312.0
+margin_right = 512.0
+margin_bottom = 210.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+columns = 4
+
+[node name="TableSectionEdit" parent="GUI/VBoxContainer/CenterContainer/TableCreateWindow/ScrollContainer/SectionsGrid" instance=ExtResource( 17 )]
 
 [node name="Buttons" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TableCreateWindow"]
 margin_left = 175.0
-margin_top = 298.0
+margin_top = 466.0
 margin_right = 648.0
-margin_bottom = 334.0
+margin_bottom = 502.0
 size_flags_horizontal = 6
 
 [node name="AddButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TableCreateWindow/Buttons"]
@@ -686,7 +694,7 @@ margin_top = 37.0
 margin_right = 412.0
 margin_bottom = 37.0
 size_flags_horizontal = 4
-columns = 5
+columns = 4
 
 [node name="Buttons" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TablePlayWindow"]
 margin_left = 377.0
