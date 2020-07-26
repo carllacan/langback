@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://theme/titlelabelfont.tres" type="DynamicFont" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://scripts/Popups.gd" type="Script" id=16]
 [ext_resource path="res://scenes/TableSectionEdit.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scripts/TableLoadMenu.gd" type="Script" id=18]
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=19]
 
 [sub_resource type="Animation" id=1]
 resource_name = "excess"
@@ -120,7 +121,7 @@ custom_constants/margin_top = 30
 custom_constants/margin_left = 100
 custom_constants/margin_bottom = 30
 
-[node name="MainMenu" type="MarginContainer" parent="GUI/VBoxContainer/CenterContainer"]
+[node name="MainMenuWindow" type="MarginContainer" parent="GUI/VBoxContainer/CenterContainer"]
 visible = false
 margin_left = 100.0
 margin_top = 30.0
@@ -130,37 +131,38 @@ custom_constants/margin_right = 200
 custom_constants/margin_top = 100
 custom_constants/margin_left = 200
 custom_constants/margin_bottom = 100
+script = ExtResource( 19 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/MainMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/MainMenuWindow"]
 margin_left = 200.0
 margin_top = 100.0
 margin_right = 624.0
 margin_bottom = 402.0
 
-[node name="CreateButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/MainMenu/VBoxContainer"]
+[node name="CreateTextButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/MainMenuWindow/VBoxContainer"]
 margin_right = 424.0
 margin_bottom = 36.0
 text = "Create a text"
 
-[node name="LoadButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/MainMenu/VBoxContainer"]
+[node name="LoadButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/MainMenuWindow/VBoxContainer"]
 margin_top = 40.0
 margin_right = 424.0
 margin_bottom = 76.0
-text = "Translate a text"
+text = "Load a text"
 
-[node name="CreateTableButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/MainMenu/VBoxContainer"]
+[node name="CreateTableButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/MainMenuWindow/VBoxContainer"]
 margin_top = 80.0
 margin_right = 424.0
 margin_bottom = 116.0
 text = "Create a table"
 
-[node name="TableButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/MainMenu/VBoxContainer"]
+[node name="TableButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/MainMenuWindow/VBoxContainer"]
 margin_top = 120.0
 margin_right = 424.0
 margin_bottom = 156.0
-text = "Fill a table"
+text = "Load a table"
 
-[node name="LoadMenu" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
+[node name="TextLoadWindow" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
 visible = false
 margin_left = 100.0
 margin_top = 30.0
@@ -169,70 +171,70 @@ margin_bottom = 532.0
 size_flags_vertical = 3
 script = ExtResource( 6 )
 
-[node name="SortBar" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/LoadMenu"]
+[node name="SortBar" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextLoadWindow"]
 margin_left = 371.0
 margin_right = 824.0
 margin_bottom = 36.0
 size_flags_horizontal = 8
 
-[node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar"]
+[node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/TextLoadWindow/SortBar"]
 margin_top = 6.0
 margin_right = 59.0
 margin_bottom = 29.0
 custom_colors/font_color = Color( 0.941176, 0.941176, 0.941176, 1 )
 text = "Sort by:"
 
-[node name="SortByLangButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar"]
+[node name="SortByLangButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextLoadWindow/SortBar"]
 margin_left = 63.0
 margin_right = 160.0
 margin_bottom = 36.0
 text = "Language"
 
-[node name="SortByPlayedButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar"]
+[node name="SortByPlayedButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextLoadWindow/SortBar"]
 margin_left = 164.0
 margin_right = 277.0
 margin_bottom = 36.0
 text = "Last played"
 
-[node name="SortByCreated" type="Button" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar"]
+[node name="SortByCreated" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextLoadWindow/SortBar"]
 margin_left = 281.0
 margin_right = 362.0
 margin_bottom = 36.0
 text = "Created"
 
-[node name="SortByProgress" type="Button" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar"]
+[node name="SortByProgress" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextLoadWindow/SortBar"]
 margin_left = 366.0
 margin_right = 453.0
 margin_bottom = 36.0
 text = "Progress"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer/LoadMenu"]
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer/TextLoadWindow"]
 margin_top = 40.0
 margin_right = 824.0
-margin_bottom = 500.0
+margin_bottom = 462.0
 grow_vertical = 2
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="TextList" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/ScrollContainer"]
+[node name="TextList" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextLoadWindow/ScrollContainer"]
 margin_right = 824.0
-margin_bottom = 460.0
+margin_bottom = 422.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI/VBoxContainer/CenterContainer/LoadMenu"]
-margin_top = 504.0
+[node name="MarginContainer" type="MarginContainer" parent="GUI/VBoxContainer/CenterContainer/TextLoadWindow"]
+margin_top = 466.0
 margin_right = 824.0
-margin_bottom = 540.0
+margin_bottom = 502.0
 
-[node name="CancelButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/LoadMenu/MarginContainer"]
+[node name="CancelButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextLoadWindow/MarginContainer"]
 margin_left = 377.0
 margin_right = 447.0
 margin_bottom = 36.0
 size_flags_horizontal = 4
 text = "Cancel"
 
-[node name="TableLoadMenu" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
+[node name="TableLoadWindow" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
 visible = false
 margin_left = 100.0
 margin_top = 30.0
@@ -241,70 +243,70 @@ margin_bottom = 532.0
 size_flags_vertical = 3
 script = ExtResource( 18 )
 
-[node name="SortBar" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TableLoadMenu"]
+[node name="SortBar" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TableLoadWindow"]
 margin_left = 371.0
 margin_right = 824.0
 margin_bottom = 36.0
 size_flags_horizontal = 8
 
-[node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/TableLoadMenu/SortBar"]
+[node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/TableLoadWindow/SortBar"]
 margin_top = 6.0
 margin_right = 59.0
 margin_bottom = 29.0
 custom_colors/font_color = Color( 0.941176, 0.941176, 0.941176, 1 )
 text = "Sort by:"
 
-[node name="SortByLangButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TableLoadMenu/SortBar"]
+[node name="SortByLangButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TableLoadWindow/SortBar"]
 margin_left = 63.0
 margin_right = 160.0
 margin_bottom = 36.0
 text = "Language"
 
-[node name="SortByPlayedButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TableLoadMenu/SortBar"]
+[node name="SortByPlayedButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TableLoadWindow/SortBar"]
 margin_left = 164.0
 margin_right = 277.0
 margin_bottom = 36.0
 text = "Last played"
 
-[node name="SortByCreated" type="Button" parent="GUI/VBoxContainer/CenterContainer/TableLoadMenu/SortBar"]
+[node name="SortByCreated" type="Button" parent="GUI/VBoxContainer/CenterContainer/TableLoadWindow/SortBar"]
 margin_left = 281.0
 margin_right = 362.0
 margin_bottom = 36.0
 text = "Created"
 
-[node name="SortByProgress" type="Button" parent="GUI/VBoxContainer/CenterContainer/TableLoadMenu/SortBar"]
+[node name="SortByProgress" type="Button" parent="GUI/VBoxContainer/CenterContainer/TableLoadWindow/SortBar"]
 margin_left = 366.0
 margin_right = 453.0
 margin_bottom = 36.0
 text = "Progress"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer/TableLoadMenu"]
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer/TableLoadWindow"]
 margin_top = 40.0
 margin_right = 824.0
-margin_bottom = 500.0
+margin_bottom = 462.0
 grow_vertical = 2
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="TextList" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TableLoadMenu/ScrollContainer"]
+[node name="TextList" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TableLoadWindow/ScrollContainer"]
 margin_right = 824.0
-margin_bottom = 460.0
+margin_bottom = 422.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI/VBoxContainer/CenterContainer/TableLoadMenu"]
-margin_top = 504.0
+[node name="MarginContainer" type="MarginContainer" parent="GUI/VBoxContainer/CenterContainer/TableLoadWindow"]
+margin_top = 466.0
 margin_right = 824.0
-margin_bottom = 540.0
+margin_bottom = 502.0
 
-[node name="CancelButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TableLoadMenu/MarginContainer"]
+[node name="CancelButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TableLoadWindow/MarginContainer"]
 margin_left = 377.0
 margin_right = 447.0
 margin_bottom = 36.0
 size_flags_horizontal = 4
 text = "Cancel"
 
-[node name="LanguageMenu" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
+[node name="LanguageSelectionWindow" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
 visible = false
 margin_left = 477.0
 margin_top = 234.0
@@ -314,15 +316,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource( 8 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageSelectionWindow"]
 margin_right = 201.0
 margin_bottom = 117.0
 
-[node name="PanelContainer" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageMenu/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageSelectionWindow/VBoxContainer"]
 margin_right = 201.0
 margin_bottom = 33.0
 
-[node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/LanguageMenu/VBoxContainer/PanelContainer"]
+[node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/LanguageSelectionWindow/VBoxContainer/PanelContainer"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 196.0
@@ -330,13 +332,13 @@ margin_bottom = 28.0
 text = "Choose original language"
 align = 1
 
-[node name="LanguageGrid" type="GridContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageMenu/VBoxContainer"]
+[node name="LanguageGrid" type="GridContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageSelectionWindow/VBoxContainer"]
 margin_top = 37.0
 margin_right = 201.0
 margin_bottom = 37.0
 columns = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageMenu/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageSelectionWindow/VBoxContainer"]
 visible = false
 margin_top = 37.0
 margin_right = 201.0
@@ -345,20 +347,20 @@ rect_min_size = Vector2( 0, 360 )
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="LanguageList" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageMenu/VBoxContainer/ScrollContainer"]
+[node name="LanguageList" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageSelectionWindow/VBoxContainer/ScrollContainer"]
 margin_right = 201.0
 margin_bottom = 360.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageMenu/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/VBoxContainer/CenterContainer/LanguageSelectionWindow/VBoxContainer"]
 margin_top = 41.0
 margin_right = 201.0
 margin_bottom = 117.0
 custom_constants/margin_top = 20
 custom_constants/margin_bottom = 20
 
-[node name="CancelButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/LanguageMenu/VBoxContainer/MarginContainer2"]
+[node name="CancelButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/LanguageSelectionWindow/VBoxContainer/MarginContainer2"]
 margin_left = 65.0
 margin_top = 20.0
 margin_right = 135.0
@@ -366,7 +368,128 @@ margin_bottom = 56.0
 size_flags_horizontal = 4
 text = "Cancel"
 
+[node name="TextCreateWindow" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
+visible = false
+margin_left = 100.0
+margin_top = 30.0
+margin_right = 924.0
+margin_bottom = 532.0
+script = ExtResource( 9 )
+
+[node name="WordCounterAnimation" type="AnimationPlayer" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow"]
+anims/excess = SubResource( 1 )
+
+[node name="TextTitle" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow"]
+margin_right = 824.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 720, 75 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/TextTitle"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 819.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/TextTitle/VBoxContainer"]
+margin_right = 814.0
+margin_bottom = 23.0
+theme = SubResource( 2 )
+custom_styles/normal = ExtResource( 11 )
+text = "Write here the title of your text"
+
+[node name="TitleEdit" type="TextEdit" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/TextTitle/VBoxContainer"]
+margin_top = 27.0
+margin_right = 814.0
+margin_bottom = 65.0
+size_flags_vertical = 3
+text = "Die verlorene Revolution"
+wrap_enabled = true
+caret_blink = true
+script = ExtResource( 14 )
+
+[node name="TextContent2" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow"]
+margin_top = 79.0
+margin_right = 824.0
+margin_bottom = 462.0
+rect_min_size = Vector2( 720, 320 )
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/TextContent2"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 819.0
+margin_bottom = 378.0
+
+[node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/TextContent2/VBoxContainer"]
+margin_right = 814.0
+margin_bottom = 23.0
+custom_styles/normal = ExtResource( 11 )
+text = "Write here your text"
+
+[node name="TextEdit" type="TextEdit" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/TextContent2/VBoxContainer"]
+margin_top = 27.0
+margin_right = 814.0
+margin_bottom = 373.0
+size_flags_vertical = 3
+text = "Die Herbstrevolution von 1989 wurde nie vollendet! Im Grunde war es danach vorbei."
+wrap_enabled = true
+caret_blink = true
+script = ExtResource( 14 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow"]
+margin_top = 466.0
+margin_right = 824.0
+margin_bottom = 502.0
+size_flags_horizontal = 5
+
+[node name="Container" type="Container" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/HBoxContainer"]
+margin_right = 272.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+
+[node name="Buttons" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/HBoxContainer"]
+margin_left = 276.0
+margin_right = 485.0
+margin_bottom = 36.0
+size_flags_horizontal = 2
+
+[node name="CreateButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/HBoxContainer/Buttons"]
+margin_right = 70.0
+margin_bottom = 36.0
+text = "Create"
+
+[node name="ResetButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/HBoxContainer/Buttons"]
+margin_left = 74.0
+margin_right = 135.0
+margin_bottom = 36.0
+text = "Reset"
+
+[node name="CancelButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/HBoxContainer/Buttons"]
+margin_left = 139.0
+margin_right = 209.0
+margin_bottom = 36.0
+text = "Cancel"
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/HBoxContainer"]
+margin_left = 747.0
+margin_right = 824.0
+margin_bottom = 36.0
+size_flags_horizontal = 10
+
+[node name="WordCounter" type="Label" parent="GUI/VBoxContainer/CenterContainer/TextCreateWindow/HBoxContainer/PanelContainer"]
+modulate = Color( 1, 0.0235294, 0, 1 )
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 72.0
+margin_bottom = 29.0
+hint_tooltip = "MyMemory only allows 1000 translated words a day."
+text = "Words: 0"
+
 [node name="TableCreateWindow" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
+visible = false
 margin_left = 100.0
 margin_top = 30.0
 margin_right = 924.0
@@ -444,128 +567,7 @@ margin_right = 473.0
 margin_bottom = 36.0
 text = "Cancel"
 
-[node name="TextInputWindow" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer"]
-visible = false
-margin_left = 100.0
-margin_top = 30.0
-margin_right = 924.0
-margin_bottom = 532.0
-script = ExtResource( 9 )
-
-[node name="WordCounterAnimation" type="AnimationPlayer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
-anims/excess = SubResource( 1 )
-
-[node name="TextTitle" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
-margin_right = 824.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 720, 75 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/TextTitle"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 819.0
-margin_bottom = 70.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/TextTitle/VBoxContainer"]
-margin_right = 814.0
-margin_bottom = 23.0
-theme = SubResource( 2 )
-custom_styles/normal = ExtResource( 11 )
-text = "Write here the title of your text"
-
-[node name="TitleEdit" type="TextEdit" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/TextTitle/VBoxContainer"]
-margin_top = 27.0
-margin_right = 814.0
-margin_bottom = 65.0
-size_flags_vertical = 3
-text = "Die verlorene Revolution"
-wrap_enabled = true
-caret_blink = true
-script = ExtResource( 14 )
-
-[node name="TextContent2" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
-margin_top = 79.0
-margin_right = 824.0
-margin_bottom = 528.0
-rect_min_size = Vector2( 720, 320 )
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/TextContent2"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 819.0
-margin_bottom = 444.0
-
-[node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/TextContent2/VBoxContainer"]
-margin_right = 814.0
-margin_bottom = 23.0
-custom_styles/normal = ExtResource( 11 )
-text = "Write here your text"
-
-[node name="TextEdit" type="TextEdit" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/TextContent2/VBoxContainer"]
-margin_top = 27.0
-margin_right = 814.0
-margin_bottom = 439.0
-size_flags_vertical = 3
-text = "Die Herbstrevolution von 1989 wurde nie vollendet! Im Grunde war es danach vorbei."
-wrap_enabled = true
-caret_blink = true
-script = ExtResource( 14 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow"]
-margin_top = 532.0
-margin_right = 824.0
-margin_bottom = 568.0
-size_flags_horizontal = 5
-
-[node name="Container" type="Container" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer"]
-margin_right = 272.0
-margin_bottom = 36.0
-size_flags_horizontal = 3
-
-[node name="Buttons" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer"]
-margin_left = 276.0
-margin_right = 485.0
-margin_bottom = 36.0
-size_flags_horizontal = 2
-
-[node name="CreateButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons"]
-margin_right = 70.0
-margin_bottom = 36.0
-text = "Create"
-
-[node name="ResetButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons"]
-margin_left = 74.0
-margin_right = 135.0
-margin_bottom = 36.0
-text = "Reset"
-
-[node name="CancelButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons"]
-margin_left = 139.0
-margin_right = 209.0
-margin_bottom = 36.0
-text = "Cancel"
-
-[node name="PanelContainer" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer"]
-margin_left = 747.0
-margin_right = 824.0
-margin_bottom = 36.0
-size_flags_horizontal = 10
-
-[node name="WordCounter" type="Label" parent="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/PanelContainer"]
-modulate = Color( 1, 0.0235294, 0, 1 )
-margin_left = 5.0
-margin_top = 6.0
-margin_right = 72.0
-margin_bottom = 29.0
-hint_tooltip = "MyMemory only allows 1000 translated words a day."
-text = "Words: 0"
-
 [node name="ProgressWindow" type="MarginContainer" parent="GUI/VBoxContainer/CenterContainer"]
-visible = false
 margin_left = 100.0
 margin_top = 30.0
 margin_right = 924.0
@@ -585,9 +587,9 @@ margin_bottom = 302.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/ProgressWindow/PanelContainer"]
 margin_left = 5.0
-margin_top = 45.0
+margin_top = 26.0
 margin_right = 519.0
-margin_bottom = 95.0
+margin_bottom = 76.0
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="GUI/VBoxContainer/CenterContainer/ProgressWindow/PanelContainer/VBoxContainer"]
@@ -607,7 +609,7 @@ rect_min_size = Vector2( 240, 20 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
 
-[node name="SentenceList" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer"]
+[node name="TextPlayWindow" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer"]
 visible = false
 margin_left = 100.0
 margin_top = 30.0
@@ -618,31 +620,31 @@ size_flags_vertical = 3
 scroll_horizontal_enabled = false
 script = ExtResource( 3 )
 
-[node name="VBox" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/SentenceList"]
+[node name="VBox" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow"]
 margin_right = 824.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/SentenceList/VBox"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow/VBox"]
 margin_right = 824.0
 margin_bottom = 40.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/SentenceList/VBox/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow/VBox/VBoxContainer"]
 margin_right = 824.0
 margin_bottom = 36.0
 
-[node name="Dummy" type="Container" parent="GUI/VBoxContainer/CenterContainer/SentenceList/VBox/VBoxContainer/HBoxContainer"]
+[node name="Dummy" type="Container" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow/VBox/VBoxContainer/HBoxContainer"]
 margin_right = 80.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 80, 0 )
 
-[node name="PanelContainer" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/SentenceList/VBox/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow/VBox/VBoxContainer/HBoxContainer"]
 margin_left = 84.0
 margin_right = 740.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 
-[node name="TextTitle" type="Label" parent="GUI/VBoxContainer/CenterContainer/SentenceList/VBox/VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="TextTitle" type="Label" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow/VBox/VBoxContainer/HBoxContainer/PanelContainer"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 651.0
@@ -650,18 +652,18 @@ margin_bottom = 31.0
 custom_fonts/font = ExtResource( 2 )
 text = "The title of this text"
 
-[node name="Dummy2" type="Container" parent="GUI/VBoxContainer/CenterContainer/SentenceList/VBox/VBoxContainer/HBoxContainer"]
+[node name="Dummy2" type="Container" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow/VBox/VBoxContainer/HBoxContainer"]
 margin_left = 744.0
 margin_right = 824.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 80, 0 )
 
-[node name="ListContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/SentenceList/VBox/VBoxContainer"]
+[node name="ListContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow/VBox/VBoxContainer"]
 margin_top = 40.0
 margin_right = 824.0
 margin_bottom = 40.0
 
-[node name="CancelButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/SentenceList/VBox"]
+[node name="CancelButton" type="Button" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow/VBox"]
 margin_left = 377.0
 margin_top = 44.0
 margin_right = 447.0
@@ -804,30 +806,30 @@ margin_bottom = 36.0
 text = "Close"
 [connection signal="pressed" from="GUI/VBoxContainer/Topbar/PanelContainer/FullscreenButton" to="." method="_on_FullscreenButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/Topbar/PanelContainer2/SettingsButton" to="." method="_on_SettingsButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/MainMenu/VBoxContainer/CreateButton" to="." method="_on_CreateButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/MainMenu/VBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/MainMenu/VBoxContainer/CreateTableButton" to="." method="_on_CreateTableButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/MainMenu/VBoxContainer/TableButton" to="." method="_on_TableButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar/SortByLangButton" to="GUI/VBoxContainer/CenterContainer/LoadMenu" method="_on_SortByLangButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar/SortByPlayedButton" to="GUI/VBoxContainer/CenterContainer/LoadMenu" method="_on_SortByPlayedButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar/SortByCreated" to="GUI/VBoxContainer/CenterContainer/LoadMenu" method="_on_SortByCreated_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/SortBar/SortByProgress" to="GUI/VBoxContainer/CenterContainer/LoadMenu" method="_on_SortByProgress_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LoadMenu/MarginContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableLoadMenu/SortBar/SortByLangButton" to="GUI/VBoxContainer/CenterContainer/TableLoadMenu" method="_on_SortByLangButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableLoadMenu/SortBar/SortByPlayedButton" to="GUI/VBoxContainer/CenterContainer/TableLoadMenu" method="_on_SortByPlayedButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableLoadMenu/SortBar/SortByCreated" to="GUI/VBoxContainer/CenterContainer/TableLoadMenu" method="_on_SortByCreated_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableLoadMenu/SortBar/SortByProgress" to="GUI/VBoxContainer/CenterContainer/TableLoadMenu" method="_on_SortByProgress_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableLoadMenu/MarginContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LanguageMenu/VBoxContainer/MarginContainer2/CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/MainMenuWindow/VBoxContainer/CreateTextButton" to="GUI/VBoxContainer/CenterContainer/MainMenuWindow" method="_on_CreateTextButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/MainMenuWindow/VBoxContainer/LoadButton" to="GUI/VBoxContainer/CenterContainer/MainMenuWindow" method="_on_LoadButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/MainMenuWindow/VBoxContainer/CreateTableButton" to="GUI/VBoxContainer/CenterContainer/MainMenuWindow" method="_on_CreateTableButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/MainMenuWindow/VBoxContainer/TableButton" to="." method="_on_TableButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextLoadWindow/SortBar/SortByLangButton" to="GUI/VBoxContainer/CenterContainer/TextLoadWindow" method="_on_SortByLangButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextLoadWindow/SortBar/SortByPlayedButton" to="GUI/VBoxContainer/CenterContainer/TextLoadWindow" method="_on_SortByPlayedButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextLoadWindow/SortBar/SortByCreated" to="GUI/VBoxContainer/CenterContainer/TextLoadWindow" method="_on_SortByCreated_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextLoadWindow/SortBar/SortByProgress" to="GUI/VBoxContainer/CenterContainer/TextLoadWindow" method="_on_SortByProgress_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextLoadWindow/MarginContainer/CancelButton" to="GUI/VBoxContainer/CenterContainer/TextLoadWindow" method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableLoadWindow/SortBar/SortByLangButton" to="GUI/VBoxContainer/CenterContainer/TableLoadWindow" method="_on_SortByLangButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableLoadWindow/SortBar/SortByPlayedButton" to="GUI/VBoxContainer/CenterContainer/TableLoadWindow" method="_on_SortByPlayedButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableLoadWindow/SortBar/SortByCreated" to="GUI/VBoxContainer/CenterContainer/TableLoadWindow" method="_on_SortByCreated_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableLoadWindow/SortBar/SortByProgress" to="GUI/VBoxContainer/CenterContainer/TableLoadWindow" method="_on_SortByProgress_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableLoadWindow/MarginContainer/CancelButton" to="GUI/VBoxContainer/CenterContainer/TableLoadWindow" method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/LanguageSelectionWindow/VBoxContainer/MarginContainer2/CancelButton" to="GUI/VBoxContainer/CenterContainer/LanguageSelectionWindow" method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextCreateWindow/HBoxContainer/Buttons/CreateButton" to="GUI/VBoxContainer/CenterContainer/TextCreateWindow" method="_on_CreateButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextCreateWindow/HBoxContainer/Buttons/ResetButton" to="GUI/VBoxContainer/CenterContainer/TextCreateWindow" method="reset"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextCreateWindow/HBoxContainer/Buttons/CancelButton" to="GUI/VBoxContainer/CenterContainer/TextCreateWindow" method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableCreateWindow/Buttons/AddButton" to="GUI/VBoxContainer/CenterContainer/TableCreateWindow" method="_on_AddButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableCreateWindow/Buttons/RemoveButton" to="GUI/VBoxContainer/CenterContainer/TableCreateWindow" method="_on_RemoveButton_pressed"]
 [connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableCreateWindow/Buttons/CreateButton" to="GUI/VBoxContainer/CenterContainer/TableCreateWindow" method="_on_CreateButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableCreateWindow/Buttons/CancelButton" to="." method="_on_CancelButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons/CreateButton" to="GUI/VBoxContainer/CenterContainer/TextInputWindow" method="_on_CreateButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons/ResetButton" to="GUI/VBoxContainer/CenterContainer/TextInputWindow" method="reset"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextInputWindow/HBoxContainer/Buttons/CancelButton" to="." method="_on_CancelButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/SentenceList/VBox/CancelButton" to="." method="_on_CancelButton_pressed"]
-[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TablePlayWindow/Buttons/CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TableCreateWindow/Buttons/CancelButton" to="GUI/VBoxContainer/CenterContainer/TableCreateWindow" method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TextPlayWindow/VBox/CancelButton" to="GUI/VBoxContainer/CenterContainer/TextPlayWindow" method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/CenterContainer/TablePlayWindow/Buttons/CancelButton" to="GUI/VBoxContainer/CenterContainer/TablePlayWindow" method="_on_CancelButton_pressed"]
 [connection signal="text_changed" from="Popups/SettingsWindow/SettingsWindow/PanelContainer/VBoxContainer/HBoxContainer/LineEdit" to="Popups/SettingsWindow" method="_on_LineEdit_text_changed"]
 [connection signal="toggled" from="Popups/SettingsWindow/SettingsWindow/PanelContainer/VBoxContainer/HBoxContainer2/CheckButton" to="." method="_on_CheckButton_toggled"]
 [connection signal="pressed" from="Popups/SettingsWindow/SettingsWindow/HBoxContainer/ResetButton" to="Popups/SettingsWindow" method="_on_Reset_pressed"]

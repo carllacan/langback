@@ -1,22 +1,27 @@
 extends VBoxContainer
 
-signal table_chosen
-#signal text_reset
+signal done(next_window, result)
+
 
 const SAVED_TABLES_DIR = "res://saved_tables/"
 var TextItem = load("res://scenes/TextItem.tscn")
 onready var text_list = find_node("TextList")
 
-func _ready():
-	connect("visibility_changed", self, "_on_visibility_change")
+#func _ready():
+#	connect("visibility_changed", self, "_on_visibility_change")
 		
-func _on_visibility_change():
-	if visible: # if show 
-		load_saved_texts()
-	else: # if hide
-		for text_box in text_list.get_children():
-			text_list.remove_child(text_box)
+func enter():
+	load_saved_texts()
+	show()
 	
+func exit():
+	hide()
+	for text_box in text_list.get_children():
+		text_list.remove_child(text_box)
+		
+func _on_CancelButton_pressed():
+	emit_signal("done", "MainMenuWindow", null)
+
 func load_saved_texts():
 	var load_dir = Directory.new()
 	load_dir.open(SAVED_TABLES_DIR)
@@ -43,14 +48,11 @@ func load_saved_texts():
 			text_list.add_child(new_ti)
 			new_ti.load_table_info(table_info)
 			new_ti.connect("chosen", self, "_on_table_choice")
-#			new_ti.connect("reset", self, "_on_text_reset")
-	
-func _on_table_choice(text_info):
-	emit_signal("table_chosen", text_info)
-#
-#func _on_text_reset(text_info):
-#	emit_signal("text_reset", text_info)
 
+	
+func _on_table_choice(table_info):
+#	emit_signal("table_chosen", text_info)
+	emit_signal("done", "TablePlayWindow", table_info)
 
 func _on_SortByLangButton_pressed():
 	sort_by_language()

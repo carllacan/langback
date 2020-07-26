@@ -3,7 +3,7 @@ extends Node
 class_name Table
 
 var title = ""
-var language = "fr"
+var language
 var created
 var last_played
 var sections = []
@@ -11,6 +11,9 @@ var sections = []
 func _init():
 	created = Globals.get_datetime()
 	last_played = Globals.get_datetime() # TODO: allow empty
+	
+func is_text():
+	return false
 	
 func set_title(_title):
 	title = _title

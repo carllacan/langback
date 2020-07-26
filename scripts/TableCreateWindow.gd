@@ -12,11 +12,17 @@ var sections = []
 func _ready():
 	connect("visibility_changed", self, "_on_visibility_change")
 	
-		
-func _on_visibility_change():
-	if visible:
-		reset()
-			
+func enter():
+	reset()
+	show()
+
+func exit():
+	hide()
+	
+#func _on_visibility_change():
+#	if visible:
+#		reset()
+
 func reset():
 	for section in sections_grid.get_children():
 		sections_grid.remove_child(section)
@@ -47,4 +53,5 @@ func _on_CreateButton_pressed():
 	
 	emit_signal("table_created", table)
 
-
+func _on_CancelButton_pressed():
+	emit_signal("done", "MainMenuWindow", null)

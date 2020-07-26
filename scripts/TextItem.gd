@@ -5,7 +5,9 @@ var text
 onready var flag = find_node("Flag")
 
 func load_text_info(text_info):
-	text = Text.new(text_info)
+	text = Text.new()
+	text.set_language(text_info["language"])
+	text.set_content(text_info)
 	find_node("OriginalLanguage").text = text.language
 	find_node("TextTitle").text = text.title
 	var total = len(text.sentences)

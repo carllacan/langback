@@ -1,10 +1,14 @@
 extends VBoxContainer
 
-signal translation_requested(text_info)
+#signal translation_requested(text_info)
+signal done(next_window, output)
 
 onready var title_edit = find_node("TitleEdit")
 onready var text_edit = find_node("TextEdit")
 onready var word_count = find_node("WordCounter")
+
+var text
+var lang = ""
 
 func _ready():
 	connect("visibility_changed", self, "_on_visibility_change")
@@ -12,16 +16,28 @@ func _ready():
 	text_edit.connect("text_changed", self, "_on_text_change")
 	
 	title_edit.set_focus_next(text_edit.get_path())
+#
+#func receive_output(_lang):
+#	lang = _lang
+		
+func enter(input):
+	show()
+#	lang = input
+	text = input
+	reset()
+	
+func exit():
+	hide()
 		
 func reset():
 	title_edit.text = ""
 	text_edit.text = ""
 	_on_text_change() # text_changed is not automatically emitted
 
-func _on_visibility_change():
-	if not visible:
-		return
-	reset()
+#func _on_visibility_change():
+#	if not visible:
+#		return
+#	reset()
 	
 func _on_text_change():
 	update_word_counter()
@@ -53,4 +69,11 @@ func _input(event):
 #		get_tree().set_input_as_handled()
 
 func _on_CreateButton_pressed():
-	emit_signal("translation_requested", [title_edit.text, text_edit.text])
+	text.title = title_edit.text
+	text.body = text_edit.text  # todo: change the text field to body
+#	emit_signal("translation_requested", [title_edit.text, text_edit.text])
+	emit_signal("done", "ProgressWindow", text)
+
+func _on_CancelButton_pressed():
+	emit_signal("done", "MainMenuWindow", null)
+

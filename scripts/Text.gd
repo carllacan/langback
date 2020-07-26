@@ -5,6 +5,7 @@ class_name Text
 var language = ""
 var title = ""
 var sentences = []
+var body = ""
 
 var created
 var last_played
@@ -14,8 +15,16 @@ func _ready():
 	created = Globals.get_datetime()
 	last_played = Globals.get_datetime() # TODO: allow empty
 
-func _init(text_info):
-	language = text_info["Language"]
+func is_text():
+	return true
+	
+func _init():
+	pass
+	
+func set_language(lang):
+	language = lang
+	
+func set_content(text_info):
 	title = text_info["Title"]
 	if "Creation" in text_info:
 		created = text_info["Creation"]
@@ -25,8 +34,11 @@ func _init(text_info):
 		last_played = text_info["LastPlayed"]
 	else:
 		last_played = Globals.get_datetime()
+	for s in text_info["Sentences"]:
+		add_sentence(s)
 		
-#	sentences = text_info["Sentences"]
+func add_sentence(sentence_info):
+		sentences.append(Sentence.new(sentence_info))
 	
 func reset():
 	autosave = false # disable autosave to avoid saving for each sentence

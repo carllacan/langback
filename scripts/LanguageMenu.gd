@@ -1,8 +1,10 @@
 extends HBoxContainer
 
-signal language_selected(lang)
+#signal language_selected(lang)
+signal done(next_window_name, output)
 
 var LanguageBox = load("res://scenes/LanguageButton.tscn")
+var new_thing # could be a text or a table
 
 const LANGUAGES = {"de":"Deutsch",
 				   "fr":"Français",
@@ -28,6 +30,21 @@ func _ready():
 		language_grid.add_child(new_lb)
 		new_lb.connect("pressed", self,  "_on_language_selected", [lang])
 			
+func enter(input):
+	new_thing = input
+	show()
+	
+func exit():
+	hide()
+	
+func _on_CancelButton_pressed():
+	emit_signal("done", "MainMenuWindow", null)
+
 func _on_language_selected(lang):
-	emit_signal("language_selected", lang)
+	new_thing.set_language(lang)
+	if new_thing.is_text():
+		emit_signal("done", "TextCreateWindow", new_thing)
+	else:
+		emit_signal("done", "TableCreateWindow", new_thing)
+	
 		

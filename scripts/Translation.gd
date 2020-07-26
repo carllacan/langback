@@ -3,7 +3,7 @@ extends Node
 class_name TranslationRequest
 
 signal sentence_translated
-signal translation_finished(text)
+signal finished(text)
 
 const SENTENCE_DELIMITERS = ".!?…«»\"„“"
 const REPLACEMENTS = {
@@ -17,6 +17,9 @@ const TRANSLATION_REPLACEMENTS = {
 	"&#39;":"'",
 	"&quot":"",
 }
+
+var text
+
 var language = ""
 var text_title = ""
 var text_body = ""	
@@ -24,7 +27,9 @@ var sentences = []
 
 onready var httpreq = HTTPRequest.new()
 
-func _init():
+func _init(_text):
+	text = _text
+	create_sentences()
 	pass
 	
 func _ready():
@@ -34,19 +39,19 @@ func _ready():
 func set_language(_language):
 	language = _language
 	
-func set_text(text_info):
-	text_title = text_info[0]
-	text_body = text_info[1]
-	create_sentences()
+#func set_text(text):
+##	text_title = text_info[0]
+##	text_body = text_info[1]
+#	create_sentences()
 	
 func create_sentences():
 	for c in REPLACEMENTS:
-		text_body = text_body.replace(c, REPLACEMENTS[c])
+		text.body = text.body.replace(c, REPLACEMENTS[c])
 		
-	for sentence in Globals.split(text_body, SENTENCE_DELIMITERS):
+	for sentence in Globals.split(text.body, SENTENCE_DELIMITERS):
 		if len(sentence) >=1:
 			sentences.append([sentence])
-#	print(sentences)
+
 
 func begin():
 	translate_sentence(sentences[0][0], language, "en")
@@ -80,21 +85,24 @@ func _on_translation_completion():
 		print("Translation:\t" + sentence_pair[1])
 
 	var text_info = {}
-	text_info["Title"] = text_title
-	text_info["Language"] = language
-	text_info["Sentences"] = []
+#	text_info["Title"] = text_title
+#	text_info["Language"] = language
+#	text_info["Sentences"] = []
 	for sentence in sentences:
 		var sentence_info = {"Original":sentence[0],
 							 "Translation":sentence[1],
 							 "Done":false}
 		if len(sentence_info["Translation"]) < 2:
 			continue
-		text_info["Sentences"].append(sentence_info)
+#		text_info["Sentences"].append(sentence_info)
+		text.add_sentence(sentence_info)
+		print(text.sentences)
 		
 		
-	var text = Text.new(text_info)
+#	var text = Text.new()
+#	text.load_content(text_info)
 	text.save()
-	emit_signal("translation_finished", [text])
+	emit_signal("finished", text)
 
 
 func translate_sentence(sentence, origin, target):
