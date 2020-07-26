@@ -48,7 +48,7 @@ func load_saved_texts():
 	
 func _on_text_choice(text):
 #	emit_signal("text_chosen", text_info)
-	emit_signal("done", "TranslateWindow", text)
+	emit_signal("done", "TextPlayWindow", text)
 
 
 func _on_SortByLangButton_pressed():

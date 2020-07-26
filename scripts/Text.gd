@@ -11,16 +11,14 @@ var created
 var last_played
 var autosave = true # save everytime something changes
 
-func _ready():
+func _init():
 	created = Globals.get_datetime()
 	last_played = Globals.get_datetime() # TODO: allow empty
 
 func is_text():
 	return true
 	
-func _init():
-	pass
-	
+
 func set_language(lang):
 	language = lang
 	

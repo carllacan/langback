@@ -84,7 +84,7 @@ func _on_translation_completion():
 		print("Original:\t" + sentence_pair[0])
 		print("Translation:\t" + sentence_pair[1])
 
-	var text_info = {}
+#	var text_info = {}
 #	text_info["Title"] = text_title
 #	text_info["Language"] = language
 #	text_info["Sentences"] = []
