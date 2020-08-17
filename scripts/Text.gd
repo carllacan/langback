@@ -36,7 +36,9 @@ func set_content(text_info):
 		add_sentence(s)
 		
 func add_sentence(sentence_info):
-		sentences.append(Sentence.new(sentence_info))
+	var new_s = Sentence.new(sentence_info)
+	new_s.connect("done", self, "save")
+	sentences.append(new_s)
 	
 func reset():
 	autosave = false # disable autosave to avoid saving for each sentence

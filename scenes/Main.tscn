@@ -568,6 +568,7 @@ margin_bottom = 36.0
 text = "Cancel"
 
 [node name="ProgressWindow" type="MarginContainer" parent="GUI/VBoxContainer/CenterContainer"]
+visible = false
 margin_left = 100.0
 margin_top = 30.0
 margin_right = 924.0
@@ -610,7 +611,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 5
 
 [node name="TextPlayWindow" type="ScrollContainer" parent="GUI/VBoxContainer/CenterContainer"]
-visible = false
 margin_left = 100.0
 margin_top = 30.0
 margin_right = 924.0
@@ -622,7 +622,7 @@ script = ExtResource( 3 )
 
 [node name="VBox" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow"]
 margin_right = 824.0
-margin_bottom = 54.0
+margin_bottom = 80.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow/VBox"]
@@ -651,6 +651,7 @@ margin_right = 651.0
 margin_bottom = 31.0
 custom_fonts/font = ExtResource( 2 )
 text = "The title of this text"
+autowrap = true
 
 [node name="Dummy2" type="Container" parent="GUI/VBoxContainer/CenterContainer/TextPlayWindow/VBox/VBoxContainer/HBoxContainer"]
 margin_left = 744.0
